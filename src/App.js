@@ -1,32 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./App.css";
+import Home from "./Home";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
-function Home() {
-  const [data, setData] = useState();
-
-  useEffect(() => {
-    fetch("/api/v1/users")
-      .then((res) => res.json())
-      .then((data) => setData(data));
-  }, []);
-
+function App() {
   return (
-    <div>
-      {data ? (
-        data.map((obj) => {
-          return (
-            <div key={obj.id}>
-              <h1>Nome: {obj.username}</h1>
-              <h1>Id: {obj.id}</h1>
-              <h1>Sesso: {obj.gender.id}</h1>
-            </div>
-          );
-        })
-      ) : (
-        <h1>Coglione</h1>
-      )}
-    </div>
+    <>
+      <Router>
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route exact path="/" element={<Navigate to="/home" replace />} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 
-export default Home;
+export default App;
