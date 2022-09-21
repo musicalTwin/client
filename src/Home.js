@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { SpotifyAuth } from "react-spotify-auth";
-import { SpotifyApiContext } from "react-spotify-api";
 import Cookies from "js-cookie";
 import { SpotifyHandler } from "./api/SpotifyHandler";
-import { Buffer } from "buffer";
 
 import "react-spotify-auth/dist/index.css";
 
