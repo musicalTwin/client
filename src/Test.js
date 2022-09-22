@@ -1,9 +1,9 @@
+// This is for backend testing
 import React, { useEffect, useState } from "react";
 import { SpotifyAuth } from "react-spotify-auth";
 import Cookies from "js-cookie";
 import { SpotifyHandler } from "./api/SpotifyHandler";
 
-import Button from '@mui/material/Button';
 import "react-spotify-auth/dist/index.css";
 
 function Home() {
@@ -33,22 +33,11 @@ function Home() {
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);
-
-
-  //  jsx output
   return (
-    <div className="Homepage">
-
-      <h1 className="Title center">MusicalTwin</h1>
-      <h2 className="Slogan center">Find someone with the same musical taste as yours.</h2>
-
-      {/* <Button variant="outlined">Test material</Button> */}
-
-
+    <div>
       {token ? (
         <div></div>
       ) : (
-        //  Spotify login button
         <SpotifyAuth
           onAccessToken={(token) => {
             setToken(token);
@@ -66,7 +55,7 @@ function Home() {
         />
       )}
 
-      {/* {data ? (
+      {data ? (
         data.map((obj) => {
           return (
             <div key={obj.id}>
@@ -78,7 +67,7 @@ function Home() {
         })
       ) : (
         <h1>Coglione</h1>
-      )} */}
+      )}
     </div>
   );
 }

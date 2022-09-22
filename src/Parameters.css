@@ -1,0 +1,6 @@
+/* Useful css parameters */
+
+.center {
+    display: flex;
+    justify-content: center;
+}

@@ -1,3 +1,70 @@
 * {
-  font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Fonts(if it wasn't obvious) */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@font-face {
+    font-family: 'CircularSpotifyText-light';
+    src: url('fonts/CircularSpotifyText-Light.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'CircularSpotifyText-medium';
+    src: url('fonts/CircularSpotifyText-Medium.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'CircularSpotifyText-bold';
+    src: url('fonts/CircularSpotifyText-Bold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'CircularSpotifyText-book';
+    src: url('fonts/CircularSpotifyText-Book.otf') format('opentype');
+}
+
+:root {
+    --BackGroundColor: #111111;
+    --TextWhite: #ffffff;
+    --SpotifyGreen: #1BC759;
+    --DarkBlack: #060606;
+    --DarkGreen: #0C3D1D;
+}
+
+.Homepage {
+    /* background-color: var(--BackGroundColor); */
+    height: 100vh;
+    background: linear-gradient(-45deg, rgba(6, 6, 6, 1) 5%, rgba(27, 199, 89, 1) 100%);
+    background-size: 200% 200%;
+    animation: gradient 10s ease infinite;
+}
+
+.Title {
+    padding-top: 15%;
+    font-size: 5vh;
+    font-family: "CircularSpotifyText-book";
+    color: var(--TextWhite);
+}
+
+.Slogan {
+    font-size: 3vh;
+    color: var(--TextWhite);
+    font-family: "CircularSpotifyText-light";
+    opacity: 0.8;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
