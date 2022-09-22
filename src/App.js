@@ -1,6 +1,9 @@
 import React from "react";
 import "./App.css";
+import "./Parameters.css";
 import Home from "./Home";
+import Test from "./Test";
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -14,6 +17,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/home" element={<Home />} />
+          <Route path="/test" element={<Test />} />
           <Route exact path="/" element={<Navigate to="/home" replace />} />
         </Routes>
       </Router>
