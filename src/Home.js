@@ -13,29 +13,32 @@ function Home() {
     const hash = window.location.hash;
     let token = Cookies.get("spotifyAuthToken");
 
-    if (!token && hash) {
+    if (hash) {
       token = hash //estrapola il token dall'url
         .substring(1)
         .split("&")
         .find((elem) => elem.startsWith("access_token"))
         .split("=")[1];
 
-      window.location.hash = "";
+      window.location = "";
 
       Cookies.set("spotifyAuthToken", token);
-    } else if (token) {
-      var spotifyObj = new SpotifyHandler(token);
-      spotifyObj.addToDatabase();
     }
 
     fetch("/api/v1/users")
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);
+
+  function mandaRichiesta() {
+    var handler = new SpotifyHandler(token);
+    handler.registerUser();
+  }
+
   return (
     <div>
       {token ? (
-        <div></div>
+        <button onClick={mandaRichiesta}>Manda Richiesta</button>
       ) : (
         <SpotifyAuth
           onAccessToken={(token) => {

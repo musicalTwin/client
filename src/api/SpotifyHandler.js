@@ -6,6 +6,11 @@ export class SpotifyHandler {
     this.spotify.setAccessToken(token);
   }
 
+  async getId() {
+    var userObj = await this.spotify.getMe();
+    return userObj.id;
+  }
+
   async getGenres() {
     var genres = [];
     var topItems = await this.spotify.getMyTopTracks();
@@ -32,10 +37,10 @@ export class SpotifyHandler {
     });
   }
 
-  async addToDatabase() {
+  async registerUser() {
     var genresList = await this.getGenres();
 
-    var id = (await this.spotify.getMe()).id;
+    var id = await this.getId();
     var body = {
       id: [id],
       genres: genresList,
