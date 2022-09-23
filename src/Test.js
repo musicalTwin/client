@@ -14,19 +14,16 @@ function Home() {
     const hash = window.location.hash;
     let token = Cookies.get("spotifyAuthToken");
 
-    if (!token && hash) {
+    if (hash) {
       token = hash //estrapola il token dall'url
         .substring(1)
         .split("&")
         .find((elem) => elem.startsWith("access_token"))
         .split("=")[1];
 
-      window.location.hash = "";
+      window.location = "/test";
 
       Cookies.set("spotifyAuthToken", token);
-    } else if (token) {
-      var spotifyObj = new SpotifyHandler(token);
-      spotifyObj.addToDatabase();
     }
 
     fetch("/api/v1/users")
@@ -34,21 +31,45 @@ function Home() {
       .then((data) => setData(data));
   }, []);
 
-  function mandaRichiesta() {
+  function aggiungiGeneriInteressati() {
     var coso = new SpotifyHandler(token);
-    coso.registerUser();
+    coso.addIntrestedToGender(2);
+  }
+
+  function aggiungiGeneri() {
+    var coso = new SpotifyHandler(token);
+    coso.addUserGenres();
+  }
+
+  function registraUtente() {
+    var coso = new SpotifyHandler(token);
+    coso.registerUser("b", 2);
   }
 
   return (
     <div>
       {token ? (
-        <button onClick={mandaRichiesta}>Manda la richiesta magica</button>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <button onClick={registraUtente}>Registra utente</button>
+          <button onClick={aggiungiGeneriInteressati}>
+            Aggiungi genere interessato
+          </button>
+          <button onClick={aggiungiGeneri}>
+            Aggiungi i generi dell'utente
+          </button>
+        </div>
       ) : (
         <SpotifyAuth
           onAccessToken={(token) => {
             setToken(token);
           }}
-          redirectUri="http://localhost:3000/home"
+          redirectUri="http://localhost:3000/test"
           clientID="4a8a038032414b9a8c7ca838266cc689"
           scopes={[
             "user-top-read",
