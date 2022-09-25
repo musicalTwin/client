@@ -71,4 +71,15 @@ export class SpotifyHandler {
     };
     await this.sendPostRequest("/api/v1/users", JSON.stringify(body));
   }
+
+  async setMatch(cardId, matched, userId) {
+    userId = userId || (await this.getId()); //se non lo passi lo ricava da solo
+    var body = {
+      matched: matched,
+      card: cardId,
+      user: userId,
+    };
+
+    await this.sendPostRequest("/api/v1/match", JSON.stringify(body));
+  }
 }

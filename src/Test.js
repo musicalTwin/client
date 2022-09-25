@@ -46,6 +46,11 @@ function Home() {
     coso.registerUser("b", 2);
   }
 
+  function setMatch() {
+    var coso = new SpotifyHandler(token);
+    coso.setMatch(52, true);
+  }
+
   return (
     <div>
       {token ? (
@@ -62,6 +67,9 @@ function Home() {
           </button>
           <button onClick={aggiungiGeneri}>
             Aggiungi i generi dell'utente
+          </button>
+          <button onClick={setMatch}>
+            match
           </button>
         </div>
       ) : (
