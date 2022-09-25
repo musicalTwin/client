@@ -35,17 +35,20 @@
     --DarkGreen: #0C3D1D;
 }
 
-.Homepage {
+.LoginPage {
     /* background-color: var(--BackGroundColor); */
     height: 100vh;
-    background: linear-gradient(-45deg, rgba(6, 6, 6, 1) 5%, rgba(27, 199, 89, 1) 100%);
+    margin: 0;
+    background: linear-gradient(-45deg, rgba(6, 6, 6, 1) 5%, rgba(27, 199, 89, 1) 100%) no-repeat;
     background-size: 200% 200%;
+    background-position: 0 -50%;
     animation: gradient 10s ease infinite;
 }
 
 .Title {
     padding-top: 15%;
-    font-size: 5vh;
+    font-size: 8vh;
+    padding-bottom: 2%;
     font-family: "CircularSpotifyText-book";
     color: var(--TextWhite);
 }
@@ -55,6 +58,33 @@
     color: var(--TextWhite);
     font-family: "CircularSpotifyText-light";
     opacity: 0.8;
+}
+
+.AuthButtonContainer {
+    margin-top: 10vh;
+    display: flex;
+    justify-content: center;
+}
+
+.AuthButton {
+    color: var(--TextWhite);
+    background-color: var(--BackGroundColor);
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    border-radius: 1em;
+    font-size: 1em;
+    /* box-shadow: none|h-offset v-offset blur spread color |inset|initial|inherit */
+    box-shadow: 0.4em 0.2em 1em var(--DarkBlack);
+    -webkit-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.AuthButton:hover {
+    box-shadow: 0.4em 0.2em 1em var(--TextWhite);
+    -webkit-transition-duration: 1s;
+    transition-duration: 1s;
+    cursor: pointer;
 }
 
 @keyframes gradient {

@@ -1,8 +1,9 @@
 import React from "react";
-import "./App.css";
+import "./Login.css";
 import "./Parameters.css";
 import Home from "./Home";
 import Test from "./Test";
+import Login from "./Login";
 
 import {
   BrowserRouter as Router,
@@ -18,7 +19,8 @@ function App() {
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/test" element={<Test />} />
-          <Route exact path="/" element={<Navigate to="/home" replace />} />
+          <Route path="/login" element={<Login />} />
+          <Route exact path="/" element={<Navigate to="/login" replace />} />
         </Routes>
       </Router>
     </>
