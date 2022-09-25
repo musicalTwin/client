@@ -33,7 +33,7 @@ function Home() {
 
   function aggiungiGeneriInteressati() {
     var coso = new SpotifyHandler(token);
-    coso.addIntrestedToGender(2);
+    coso.addIntrestedToGender(4);
   }
 
   function aggiungiGeneri() {
