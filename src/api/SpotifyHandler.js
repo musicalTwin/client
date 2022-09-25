@@ -50,12 +50,11 @@ export class SpotifyHandler {
     await this.sendPostRequest("/api/v1/interested-in", JSON.stringify(body));
   }
 
-  async addUserGenres() {
+  async addUserGenres(userId) {
     var genresList = await this.getGenres();
-
-    var id = await this.getId();
+    userId = userId || (await this.getId()); //se non lo passi lo ricava da solo
     var body = {
-      id: [id],
+      id: [userId],
       genres: genresList,
     };
     await this.sendPostRequest("/api/v1/user-genres", JSON.stringify(body));
