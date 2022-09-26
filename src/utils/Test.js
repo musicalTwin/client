@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { SpotifyAuth } from "react-spotify-auth";
 import Cookies from "js-cookie";
-import { SpotifyHandler } from "./api/SpotifyHandler";
+import { SpotifyHandler } from "../api/SpotifyHandler";
 
 import "react-spotify-auth/dist/index.css";
 

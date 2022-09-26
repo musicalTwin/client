@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { SpotifyAuth } from "react-spotify-auth";
 import Cookies from "js-cookie";
-import { SpotifyHandler } from "./api/SpotifyHandler";
-import { CreationHandler } from "./CreationHandler";
+import { SpotifyHandler } from "../api/SpotifyHandler";
+import { CreationHandler } from "../utils/CreationHandler";
 
 
 import Button from "@mui/material/Button";

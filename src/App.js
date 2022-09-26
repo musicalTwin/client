@@ -1,15 +1,15 @@
 import React from "react";
 
-import "./Login.css";
-import "./Parameters.css";
-import "./register.css";
-import "./Home.css";
+import "./styles/Login.css";
+import "./styles/Parameters.css";
+import "./styles/register.css";
+import "./styles/Home.css";
 
-import Home from "./Home";
-import Test from "./Test";
-import Login from "./Login";
-import Register from "./Register";
-import Error from "./Error";
+import Home from "./pages/Home";
+import Test from "./utils/Test";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Error from "./pages/Error";
 
 import {
   BrowserRouter as Router,

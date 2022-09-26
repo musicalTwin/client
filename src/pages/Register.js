@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { SpotifyHandler } from "./api/SpotifyHandler";
-import { creation } from "./CreationHandler";
+import { SpotifyHandler } from "../api/SpotifyHandler";
+import { creation } from "../utils/CreationHandler";
 import Cookies from "js-cookie";
 
 // await function GetGenders(){
