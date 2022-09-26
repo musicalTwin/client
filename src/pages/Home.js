@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { SpotifyAuth } from "react-spotify-auth";
 import Cookies from "js-cookie";
-import {creation} from "../utils/CreationHandler";
+import { creation } from "../utils/CreationHandler";
 
 import Button from "@mui/material/Button";
 
 function Home() {
-
   useEffect(() => {
     // let creation = Cookies.get("creationDate");
     // let token = Cookies.get("spotifyAuthToken");
 
     // creation = parseInt(creation);
-    
 
     // if(creation != null){
 
@@ -22,22 +20,16 @@ function Home() {
     //     Cookies.remove("spotifyAuthToken", {path:'/'});
     //     window.location = "/login";
     //   }
-      
+
     // }
     creation();
-    
-  },[]);
+  }, []);
 
-  return(
+  return (
     <div className="Homepage">
-      <div className="messages">
-        
-      </div>
-      <div className="swipeCard">
-
-      </div>
+      <div className="messages"></div>
+      <div className="swipeCard"></div>
     </div>
   );
-
 }
 export default Home;

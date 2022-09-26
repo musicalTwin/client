@@ -4,7 +4,6 @@ import Cookies from "js-cookie";
 import { SpotifyHandler } from "../api/SpotifyHandler";
 import { CreationHandler } from "../utils/CreationHandler";
 
-
 import Button from "@mui/material/Button";
 import "react-spotify-auth/dist/index.css";
 
@@ -18,24 +17,22 @@ function Login() {
     let creation = Cookies.get("creationDate");
 
     if (hash) {
-        
-        creation = Date.now()
-        token = hash //estrapola il token dall'url
-            .substring(1)
-            .split("&")
-            .find((elem) => elem.startsWith("access_token"))
-            .split("=")[1];
+      creation = Date.now();
+      token = hash //estrapola il token dall'url
+        .substring(1)
+        .split("&")
+        .find((elem) => elem.startsWith("access_token"))
+        .split("=")[1];
 
-        window.location = "/login";
+      window.location = "/login";
 
-        Cookies.set("spotifyAuthToken", token);
-        Cookies.set("creationDate", creation);
+      Cookies.set("spotifyAuthToken", token);
+      Cookies.set("creationDate", creation);
     }
   }, []);
 
   if (token) {
     window.location = "/home";
-
   }
 
   return (

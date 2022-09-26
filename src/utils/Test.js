@@ -7,8 +7,9 @@ import { SpotifyHandler } from "../api/SpotifyHandler";
 import "react-spotify-auth/dist/index.css";
 
 function Home() {
-  const [data, setData] = useState();
   const [token, setToken] = useState(Cookies.get("spotifyAuthToken"));
+  const [genders, setGenders] = useState([]);
+  const [intrestedGender, setIntrestedGender] = useState([]);
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -26,14 +27,24 @@ function Home() {
       Cookies.set("spotifyAuthToken", token);
     }
 
-    fetch("/api/v1/users")
+    fetch("/api/v1/genders")
       .then((res) => res.json())
-      .then((data) => setData(data));
+      .then((result) => setGenders(result));
+
+    fetch("/api/v1/interested-in/21u4ax3hxvenml3p7kdvrjlba")
+      .then((res) => res.json())
+      .then((result) => {
+        var list = [];
+        result.map((obj) => {
+          return list.push(obj.gender.id);
+        });
+        setIntrestedGender(list);
+      });
   }, []);
 
-  function aggiungiGeneriInteressati() {
+  function aggiungiGeneriInteressati(list) {
     var coso = new SpotifyHandler(token);
-    coso.addIntrestedToGender(4);
+    return coso.addIntrestedToGender(list);
   }
 
   function aggiungiGeneri() {
@@ -68,9 +79,7 @@ function Home() {
           <button onClick={aggiungiGeneri}>
             Aggiungi i generi dell'utente
           </button>
-          <button onClick={setMatch}>
-            match
-          </button>
+          <button onClick={setMatch}>match</button>
         </div>
       ) : (
         <SpotifyAuth
@@ -90,19 +99,47 @@ function Home() {
         />
       )}
 
-      {data ? (
-        data.map((obj) => {
-          return (
-            <div key={obj.id}>
-              <h1>Nome: {obj.username}</h1>
-              <h1>Id: {obj.id}</h1>
-              <h1>Sesso: {obj.gender.id}</h1>
-            </div>
-          );
-        })
-      ) : (
-        <h1>Coglione</h1>
-      )}
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          if (intrestedGender > 0) {
+            aggiungiGeneriInteressati(intrestedGender);
+          } else {
+            alert("o zio ma cosa sei asessuale? che schifo ");
+          }
+        }}
+      >
+        {genders.length > 0
+          ? genders.map((gender) => (
+              <div className="CheckContainer" key={gender.id}>
+                <div>
+                  {/* fix checkbox required with script https://stackoverflow.com/questions/22238368/how-can-i-require-at-least-one-checkbox-be-checked-before-a-form-can-be-submitte*/}
+                  <input
+                    className="FormCheckbox"
+                    type="checkbox"
+                    id={gender.id}
+                    value={gender.name}
+                    checked={intrestedGender.includes(gender.id)}
+                    onChange={(e) => {
+                      var tempList = [...intrestedGender];
+                      if (tempList.includes(gender.id)) {
+                        tempList.splice(tempList.indexOf(gender.id), 1);
+                      } else {
+                        tempList.push(gender.id);
+                      }
+                      setIntrestedGender(tempList);
+                    }}
+                  />
+                  <label className="FormCheckbox" htmlFor={gender.id}>
+                    {gender.name}
+                  </label>
+                </div>
+              </div>
+            ))
+          : // <input type="checkbox"/>
+            console.log("morte")}
+        <input type="submit" value="mario" />
+      </form>
     </div>
   );
 }
