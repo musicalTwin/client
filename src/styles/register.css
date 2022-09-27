@@ -159,6 +159,7 @@ input {
     -webkit-transition-duration: 0.5s;
     transition-duration: 0.5s;
     cursor: pointer;
+    opacity: 0.8;
 }
 
 ::placeholder {
