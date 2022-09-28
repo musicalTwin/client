@@ -3,6 +3,8 @@ import { SpotifyAuth } from "react-spotify-auth";
 import Cookies from "js-cookie";
 import { SpotifyHandler } from "../api/SpotifyHandler";
 import { CreationHandler } from "../utils/CreationHandler";
+import Spotify from "spotify-web-api-js";
+
 
 import Button from "@mui/material/Button";
 import "react-spotify-auth/dist/index.css";
@@ -10,11 +12,24 @@ import "react-spotify-auth/dist/index.css";
 function Login() {
   const [data, setData] = useState();
   const [token, setToken] = useState(Cookies.get("spotifyAuthToken"));
+  // const [userid, setUserId] = useState([]);
+  let userid = "7prmvt3cwczea28e1ymxy5u97";
+  const [users, setUsers] = useState([]);
 
+
+  // function GetUserId() {
+  //   var coso = new SpotifyHandler(token);
+  //   // return coso.spotify.getMe()
+    
+  //       // return coso.api.getMe()
+  //   }
+  // }
+  
   useEffect(() => {
     const hash = window.location.hash;
     let token = Cookies.get("spotifyAuthToken");
     let creation = Cookies.get("creationDate");
+    
 
     if (hash) {
       creation = Date.now();
@@ -26,15 +41,38 @@ function Login() {
 
       window.location = "/login";
 
-      Cookies.set("spotifyAuthToken", token);
+      Cookies.set("spotifyAuthToken", token)
       Cookies.set("creationDate", creation);
     }
+    
+    
+
   }, []);
-
   if (token) {
-    window.location = "/home";
-  }
+    // const coso = new SpotifyHandler(token);
+    // coso.getId().then(userObj => setUserId(userObj));
+    // alert(userid)
+    try {
+      fetch("http://localhost:5000/api/v1/users/7prmvt3cwczea28e1ymxy5u97")
+      
+      .then((res) => console.log(res))
+      .then((result) => {
+        setUsers(result);
+      });
+      // console.log(users);
+      if(users != null){
+        console.log("user already exists");
+        // window.location = "/home";
+      }else{
+        // window.location = "/register";
+        // console.log("user does not exist");
+      }
+    } catch (error) {
+      console.log("error");
+    }
+    // window.location = "/home";
 
+  }
   return (
     <div className="LoginPage">
       <h1 className="Title center">MusicalTwin</h1>
@@ -47,6 +85,7 @@ function Login() {
       {token ? (
         // se c'è il token si vedrà il div, altrimenti spotifyAuthToken
         <div></div>
+        // alert("token found")
       ) : (
         //  Spotify login button
 
