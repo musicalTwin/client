@@ -3,14 +3,36 @@ import { SpotifyHandler } from "../api/SpotifyHandler";
 import { creation } from "../utils/CreationHandler";
 import Cookies from "js-cookie";
 
-// await function GetGenders(){
-//     const response = await fetch('/api/v1/genders');
-//     const data = await response.json();
-//     this.setState({ totalReactPackages: data.total })
-// }
+
 
 function Register() {
+  const [token, setToken] = useState(Cookies.get("spotifyAuthToken"));
   const [genders, setGenders] = useState([]);
+  
+  const [username, setUsername] = useState([]);
+  const [gender, setGender] = useState([]);
+  const [intrestedGender, setIntrestedGender] = useState([]);
+  
+  // that's used to determine whether or not the user selected at least an intrested gender
+  const [intrestedGenderCounter, setintrestedGenderCounter] = useState(0);
+
+  
+
+
+  function aggiungiGeneriInteressati() {
+    var initializer = new SpotifyHandler(token);
+    return initializer.addIntrestedToGender(intrestedGender);
+  }
+
+  function aggiungiGeneri() {
+    var initializer = new SpotifyHandler(token);
+    initializer.addUserGenres();
+  }
+
+  function registraUtente() {
+    var initializer = new SpotifyHandler(token);
+    initializer.registerUser(username, gender);
+  }
 
   // add error handler: https://reactjs.org/docs/faq-ajax.html
   useEffect(() => {
@@ -23,16 +45,38 @@ function Register() {
     creation();
   }, []);
 
-  console.log(genders);
+  // this sends the user informations to the server(if the user checked all the infos)
+  function injector(){
+    if(intrestedGenderCounter > 0){
+      try {
+        aggiungiGeneri();
+        registraUtente();
+        aggiungiGeneriInteressati();
+      } catch (error) {
+        alert("dai");
+      }
+    }else{
+      alert("Complete all the parameters first!");
+    }
+
+
+  }
+
+  // tests all the parameters to submit
+  function testingParameters(){
+    console.log("Injected parameters: ", gender,  username, intrestedGender);
+    console.log("Injected parameters types: ", typeof gender,typeof  username,typeof intrestedGender);
+    console.log(intrestedGenderCounter);
+  } 
 
   return (
-    // the LoginPage is set to have the same background as the original login page
     <div className="Register">
       <div className="RegistrationHeader">
         <h1>MusicalTwin</h1>
       </div>
+
       {/* onsubmit */}
-      <form action="#" className="RegisterForm">
+      <form className="RegisterForm" onSubmit={(e) => {e.preventDefault()}}>
         <div className="UselessDiv">
           <header className="Registration">
             <h1>Sign Up</h1>
@@ -46,26 +90,42 @@ function Register() {
             <input
               className="form-input"
               type="text"
+              value={username}
               placeholder="Username"
+              onChange={(e) => setUsername(e.target.value)}
               required
             ></input>
             <br></br>
 
             {/* <h1 className="FormText">Select your gender:</h1> */}
             {/* Gender of the user */}
-            <select className="UserGenderSelector">
-              <option value="" disabled selected>
+            <select 
+            className="UserGenderSelector"
+            required
+            defaultValue="ListHeader"
+            onChange={(e) => {
+              genders.map((selfgender) => {
+                if(e.target.value == selfgender.name){
+                  setGender(selfgender.id);
+                }
+              })
+            }
+          }>
+
+
+              <option value="ListHeader"  disabled >
                 Select your gender
               </option>
-              {/* per ogni elemento nella lista, si fa un'opzione da selezionare */}
+              {/* for each element in the list, a selectable option is made */}
               {genders.length > 0 ? (
-                genders.map((gender) => (
+                genders.map((selfgender) => (
                   <option
-                    key={gender.id}
-                    value={gender.name}
+                    key={selfgender.id}
+                    value={selfgender.name}
                     className="OptionColor"
+                    
                   >
-                    {gender.name}
+                    {selfgender.name}
                   </option>
                 ))
               ) : (
@@ -77,30 +137,42 @@ function Register() {
             <h1 className="FormText">Select what you like:</h1>
             {genders.length > 0
               ? genders.map((gender) => (
-                  <div className="CheckContainer">
+                  <div className="CheckContainer" key={gender.id}>
                     <div>
-                      {/* fix checkbox required with script https://stackoverflow.com/questions/22238368/how-can-i-require-at-least-one-checkbox-be-checked-before-a-form-can-be-submitte*/}
                       <input
                         className="FormCheckbox"
                         type="checkbox"
                         id={gender.id}
                         value={gender.name}
+                        
+                        onChange={(e) => {
+                          var tempList = [...intrestedGender];
+                          // if it's present, jt gets deleted
+                          if (tempList.includes(gender.id)) {
+                            tempList.splice(tempList.indexOf(gender.id), 1);
+                            setintrestedGenderCounter(intrestedGenderCounter-1)
+                          } else {
+                            // if it's not, it gets added
+                            setintrestedGenderCounter(intrestedGenderCounter+1)
+                            tempList.push(gender.id);
+                          }
+                          setIntrestedGender(tempList);
+                        }}
                       />
-                      <label className="FormCheckbox" for={gender.id}>
+                      <label className="FormCheckbox" htmlFor={gender.id}>
                         {gender.name}
                       </label>
                     </div>
                   </div>
                 ))
-              : // <input type="checkbox"/>
-                console.log("morte")}
+              : 
+                console.log("Can't load genders yet")}
 
             {/* username */}
 
-            {/* <input className="SocialInput" type="text" title="ex. https://www.instagram.com/francescototti/" placeholder="Socials" required></input><br></br> */}
           </div>
-
-          <input type="submit" className="SubmitForm" value="Submit"></input>
+          {/* call */}
+          <input type="submit" onClick={injector} className="SubmitForm" value="Submit"></input>
         </div>
       </form>
     </div>

@@ -31,6 +31,7 @@ function Home() {
       .then((res) => res.json())
       .then((result) => setGenders(result));
 
+    // useful when editing profile 
     fetch("/api/v1/interested-in/21u4ax3hxvenml3p7kdvrjlba")
       .then((res) => res.json())
       .then((result) => {
@@ -42,6 +43,7 @@ function Home() {
       });
   }, []);
 
+  
   function aggiungiGeneriInteressati(list) {
     var coso = new SpotifyHandler(token);
     return coso.addIntrestedToGender(list);
