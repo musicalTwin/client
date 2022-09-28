@@ -82,6 +82,7 @@ export class SpotifyHandler {
 
   async setMatch(cardId, matched, userId) {
     userId = userId || (await this.getId()); //se non lo passi lo ricava da solo
+    console.log(typeof userId);
     var body = {
       matched: matched,
       card: cardId,
