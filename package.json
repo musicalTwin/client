@@ -21,6 +21,7 @@
         "react-scripts": "5.0.1",
         "react-spotify-api": "^3.0.0",
         "react-spotify-auth": "^1.4.3",
+        "react-tinder-card": "^1.5.4",
         "spotify-web-api-js": "^1.5.2",
         "web-vitals": "^2.1.4"
     },
