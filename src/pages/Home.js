@@ -38,7 +38,9 @@ function Home() {
   }, []);
 
   return (
-    <div>{db.length > 1 ? <MatchingPart db={db} /> : <h1>Loading </h1>}</div>
+    <div className="Home">
+      {db.length > 1 ? <MatchingPart db={db} /> : <h1>Loading </h1>}
+    </div>
   );
 }
 export default Home;

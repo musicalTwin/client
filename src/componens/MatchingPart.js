@@ -1,7 +1,6 @@
-import React, { useEffect, useState, useMemo, useRef } from "react";
+import React, { useState, useMemo, useRef } from "react";
 import TinderCard from "react-tinder-card";
 import "../styles/Home.css";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
 const MatchingPart = (props) => {

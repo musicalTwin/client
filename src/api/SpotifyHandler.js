@@ -106,4 +106,12 @@ export class SpotifyHandler {
     var response = await fetch(`/api/v1/recommendation/${userId}`);
     return response;
   }
+
+  async checkIfMatched(userToCheckId, userId) {
+    userId = userId || (await this.getId()); //se non lo passi lo ricava da solo
+    var response = await fetch(
+      `/api/v1/match/check-match?userId1=${userToCheckId}&Id2=${userId}`
+    );
+    return response;
+  }
 }
