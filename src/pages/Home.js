@@ -1,36 +1,29 @@
-import React, { useEffect, useState, useMemo, useRef } from "react";
-import { SpotifyAuth } from "react-spotify-auth";
+import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { creation } from "../utils/CreationHandler";
 import { SpotifyHandler } from "../api/SpotifyHandler";
 import "../styles/Home.css";
-import MatchingPart from "../componens/MatchingPart";
-
-import Button from "@mui/material/Button";
+import MatchingPart from "../components/MatchingPart";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 function Home() {
-  const [token, setToken] = useState(Cookies.get("spotifyAuthToken"));
-  const [db, setDb] = useState([{}]);
+  const token = Cookies.get("spotifyAuthToken");
+  const [loading, setLoading] = useState(true);
+  const [db, setDb] = useState([]);
+
+  const firstTime = Cookies.get("firstTime");
 
   useEffect(() => {
-    let token = Cookies.get("spotifyAuthToken");
-
     if (token) {
-      setToken(token);
+      if (firstTime === undefined) {
+        alert("Right --> Match\nLeft or whatever --> Refuse");
+        Cookies.set("firstTime", false);
+      }
       const coso = new SpotifyHandler(token);
-      // coso.proPic("7prmvt3cwczea28e1ymxy5u97").then(userProfilePicture => console.log(userProfilePicture));
-      // coso.getUsers().then((users) =>
-      //   // users.map((user) => {
-      //   //   // console.log(user.id) returns every user in the database no
-      //   //   coso
-      //   //     .proPic(user.id)
-      //   //     .then((userProfilePicture) => console.log(userProfilePicture));
-      //   })
-      // );
+
       coso.getRecommendations().then((res) => {
-        res.json().then((obj) => {
-          setDb(obj);
-        });
+        setDb(res);
+        setLoading(false);
       });
     }
 
@@ -39,7 +32,8 @@ function Home() {
 
   return (
     <div className="Home">
-      {db.length > 1 ? <MatchingPart db={db} /> : <h1>Loading </h1>}
+      {!loading ? <MatchingPart db={db} /> : <LoadingSpinner />}
+      {/* <LoadingSpinner /> */}
     </div>
   );
 }

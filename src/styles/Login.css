@@ -1,101 +1,107 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
-
 
 /* Fonts(if it wasn't obvious) */
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 @font-face {
-    font-family: 'CircularSpotifyText-light';
-    src: url('fonts/CircularSpotifyText-Light.otf') format('opentype');
+  font-family: "CircularSpotifyText-light";
+  src: url("fonts/CircularSpotifyText-Light.otf") format("opentype");
 }
 
 @font-face {
-    font-family: 'CircularSpotifyText-medium';
-    src: url('fonts/CircularSpotifyText-Medium.otf') format('opentype');
+  font-family: "CircularSpotifyText-medium";
+  src: url("fonts/CircularSpotifyText-Medium.otf") format("opentype");
 }
 
 @font-face {
-    font-family: 'CircularSpotifyText-bold';
-    src: url('fonts/CircularSpotifyText-Bold.otf') format('opentype');
+  font-family: "CircularSpotifyText-bold";
+  src: url("fonts/CircularSpotifyText-Bold.otf") format("opentype");
 }
 
 @font-face {
-    font-family: 'CircularSpotifyText-book';
-    src: url('fonts/CircularSpotifyText-Book.otf') format('opentype');
+  font-family: "CircularSpotifyText-book";
+  src: url("fonts/CircularSpotifyText-Book.otf") format("opentype");
 }
 
 :root {
-    --BackGroundColor: #111111;
-    --TextWhite: #ffffff;
-    --SpotifyGreen: #1BC759;
-    --DarkBlack: #060606;
-    --DarkGreen: #0C3D1D;
+  --BackGroundColor: #111111;
+  --TextWhite: #ffffff;
+  --SpotifyGreen: #1bc759;
+  --DarkBlack: #060606;
+  --DarkGreen: #0c3d1d;
 }
 
 .LoginPage {
-    /* background-color: var(--BackGroundColor); */
-    height: 100vh;
-    width: 100%;
-    margin: 0;
-    background: linear-gradient(-45deg, rgba(6, 6, 6, 1) 5%, rgba(27, 199, 89, 1) 100%) no-repeat;
-    background-size: 200% 200%;
-    background-position: 0 -50%;
-    animation: gradient 10s ease infinite;
+  /* background-color: var(--BackGroundColor); */
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  background: linear-gradient(
+      -45deg,
+      rgba(6, 6, 6, 1) 5%,
+      rgba(27, 199, 89, 1) 100%
+    )
+    no-repeat;
+  background-size: 200% 200%;
+  background-position: 0 -50%;
+  animation: gradient 10s ease infinite;
 }
 
 .Title {
-    padding-top: 15%;
-    font-size: 8vh;
-    padding-bottom: 2%;
-    font-family: "CircularSpotifyText-book";
-    color: var(--TextWhite);
+  padding-top: 15%;
+  font-size: 8vh;
+  padding-bottom: 2%;
+  font-family: "CircularSpotifyText-book";
+  color: var(--TextWhite);
+  text-align: center;
 }
 
 .Slogan {
-    font-size: 3vh;
-    color: var(--TextWhite);
-    font-family: "CircularSpotifyText-light";
-    opacity: 0.8;
+  font-size: 3vh;
+  color: var(--TextWhite);
+  font-family: "CircularSpotifyText-light";
+  opacity: 0.8;
+  text-align: center;
 }
 
 .AuthButtonContainer {
-    margin-top: 10vh;
-    display: flex;
-    justify-content: center;
+  margin-top: 10vh;
+  display: flex;
+  justify-content: center;
 }
 
 .AuthButton {
-    color: var(--TextWhite);
-    background-color: var(--BackGroundColor);
-    display: flex;
-    align-items: center;
-    padding: 1em;
-    border-radius: 1em;
-    font-size: 1em;
-    /* box-shadow: none|h-offset v-offset blur spread color |inset|initial|inherit */
-    box-shadow: 0.4em 0.2em 1em var(--DarkBlack);
-    -webkit-transition-duration: 1s;
-    transition-duration: 1s;
+  color: var(--TextWhite);
+  background-color: var(--BackGroundColor);
+  display: flex;
+  align-items: center;
+  padding: 1em;
+  border-radius: 1em;
+  font-size: 1em;
+  /* box-shadow: none|h-offset v-offset blur spread color |inset|initial|inherit */
+  box-shadow: 0.4em 0.2em 1em var(--DarkBlack);
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
 }
 
 .AuthButton:hover {
-    box-shadow: 0.4em 0.2em 1em var(--TextWhite);
-    -webkit-transition-duration: 1s;
-    transition-duration: 1s;
-    cursor: pointer;
+  box-shadow: 0.4em 0.2em 1em var(--TextWhite);
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  cursor: pointer;
 }
 
 @keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }

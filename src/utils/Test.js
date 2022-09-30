@@ -45,7 +45,7 @@ function Home() {
 
   function aggiungiGeneriInteressati(list) {
     var coso = new SpotifyHandler(token);
-    return coso.addIntrestedToGender(list);
+    coso.addIntrestedToGender(list);
   }
 
   function aggiungiGeneri() {
@@ -61,6 +61,12 @@ function Home() {
   function setMatch() {
     var coso = new SpotifyHandler(token);
     coso.setMatch(2, true, "31ypjzitriimy4b2fhfhu5enh4w4");
+  }
+
+  async function getGenres() {
+    var coso = new SpotifyHandler(token);
+    var giovanni = await coso.getUserGenre();
+    console.log(giovanni);
   }
 
   return (
@@ -81,6 +87,7 @@ function Home() {
             Aggiungi i generi dell'utente
           </button>
           <button onClick={setMatch}>match</button>
+          <button onClick={getGenres}>fois</button>
         </div>
       ) : (
         <SpotifyAuth

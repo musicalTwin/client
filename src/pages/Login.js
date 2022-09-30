@@ -3,19 +3,15 @@ import { SpotifyAuth } from "react-spotify-auth";
 import Cookies from "js-cookie";
 import { SpotifyHandler } from "../api/SpotifyHandler";
 import { CreationHandler } from "../utils/CreationHandler";
-import Spotify from "spotify-web-api-js";
 
-import Button from "@mui/material/Button";
 import "react-spotify-auth/dist/index.css";
+import "../styles/Login.css";
 
 function Login() {
-  const [data, setData] = useState();
   const [token, setToken] = useState(Cookies.get("spotifyAuthToken"));
   const [userid, setUserId] = useState([]);
   // let userid = "7prmvt3cwczea28e1ymxy5u97";
-  const [users, setUsers] = useState([]);
 
-  
   // retrives token and adds data to cookies
   useEffect(() => {
     const hash = window.location.hash;
@@ -35,48 +31,40 @@ function Login() {
       Cookies.set("spotifyAuthToken", token);
       Cookies.set("creationDate", creation);
     }
-    
   }, []);
 
-  // checks if the user already registered in the database, 
+  // checks if the user already registered in the database,
   // if not it gets redireted to the registration page
   useEffect(() => {
-    if(token){
+    if (token) {
       const coso = new SpotifyHandler(token);
-      coso.getId().then(userObj => setUserId(userObj));
+      coso.getId().then((userObj) => setUserId(userObj));
     }
-    if (token && typeof userid == "string" ) {
-      
-      console.log("User:",typeof userid, userid);
+    if (token && typeof userid == "string") {
+      console.log("User:", typeof userid, userid);
       try {
-
         fetch(`api/v1/users/${userid}`)
-        .then((res) => res.json())
-        .then(data => {
-
-          try {
-            if(data.id == null){
-              console.log("User does not exist");
+          .then((res) => res.json())
+          .then((data) => {
+            try {
+              if (data.id == null) {
+                console.log("User does not exist");
+                window.location = "/register";
+              } else {
+                console.log("user already exists");
+                window.location = "/home";
+              }
+            } catch (error) {
+              console.log("user does not easdxist");
               window.location = "/register";
-
-            }else{
-              console.log("user already exists");
-              window.location = "/home";
             }
-          } catch (error) {
-            console.log("user does not easdxist")
-            window.location = "/register";
-          }
-          
-        })
-        
-  
+          });
       } catch (error) {
         console.log("error");
       }
       // window.location = "/home";
     }
-  })
+  });
 
   return (
     <div className="LoginPage">
@@ -84,7 +72,6 @@ function Login() {
       <h2 className="Slogan center">
         Find someone with the same musical taste as yours.
       </h2>
-
 
       {token ? (
         // if there's a token it shows the div, otherwise it shows the button

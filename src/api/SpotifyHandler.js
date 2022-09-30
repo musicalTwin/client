@@ -76,7 +76,7 @@ export class SpotifyHandler {
 
   async addUserGenres(userId) {
     var genresList = await this.getGenres();
-    userId = userId || (await this.getId()); //se non lo passi lo ricava da solo
+    userId = userId || (await this.spotify.getMe()).id; //se non lo passi lo ricava da solo
     var body = {
       id: [userId],
       genres: genresList,
@@ -109,7 +109,15 @@ export class SpotifyHandler {
   async getRecommendations(userId) {
     userId = userId || (await this.getId()); //se non lo passi lo ricava da solo
     var response = await fetch(`/api/v1/recommendation/${userId}`);
-    return response;
+    var objs = await response.json();
+
+    // objs.forEach(async (obj, index) => {
+    //   var asd = await this.getUserGenre(obj.user.id); //non funziona questo schifo
+    //   obj = { ...obj, top3: asd };
+    //   objs[index] = obj;
+    // });
+
+    return objs;
   }
 
   async checkIfMatched(userToCheckId, userId) {
@@ -118,8 +126,15 @@ export class SpotifyHandler {
       `/api/v1/match/check-match?userId1=${userToCheckId}&userId2=${userId}`
     );
     var text = await response.text();
-    console.log(text );
     var bool = text === "true";
     return bool;
+  }
+
+  async getUserGenre(userId) {
+    userId = userId || (await this.getId()); //se non lo passi lo ricava da solo
+    var response = await fetch(`/api/v1/user-genres/${userId}`);
+    var text = await response.text();
+    var obj = JSON.parse(text);
+    return obj.slice(0, 3);
   }
 }

@@ -1,9 +1,5 @@
 import React from "react";
 
-import "./styles/Login.css";
-import "./styles/Parameters.css";
-import "./styles/register.css";
-
 import Home from "./pages/Home";
 import Test from "./utils/Test";
 import Login from "./pages/Login";
