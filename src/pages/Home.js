@@ -3,7 +3,7 @@ import { SpotifyAuth } from "react-spotify-auth";
 import Cookies from "js-cookie";
 import { creation } from "../utils/CreationHandler";
 import { SpotifyHandler } from "../api/SpotifyHandler";
-// import "../styles/Home.css";
+import "../styles/Home.css";
 import MatchingPart from "../componens/MatchingPart";
 
 import Button from "@mui/material/Button";

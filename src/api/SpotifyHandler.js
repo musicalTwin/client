@@ -1,4 +1,5 @@
 import Spotify from "spotify-web-api-js";
+import Cookie from "js-cookie";
 
 export class SpotifyHandler {
   constructor(token) {
@@ -7,8 +8,13 @@ export class SpotifyHandler {
   }
 
   async getId() {
-    var userObj = await this.spotify.getMe();
-    return userObj.id;
+    var userId = Cookie.get("userId");
+    if (userId === undefined) {
+      var userObj = await this.spotify.getMe();
+      userId = userObj.id;
+      Cookie.set("userId", userId);
+    }
+    return userId;
   }
 
   async proPic(userId) {
@@ -91,7 +97,6 @@ export class SpotifyHandler {
 
   async setMatch(cardId, matched, userId) {
     userId = userId || (await this.getId()); //se non lo passi lo ricava da solo
-    console.log(typeof userId);
     var body = {
       matched: matched,
       card: cardId,
@@ -110,8 +115,11 @@ export class SpotifyHandler {
   async checkIfMatched(userToCheckId, userId) {
     userId = userId || (await this.getId()); //se non lo passi lo ricava da solo
     var response = await fetch(
-      `/api/v1/match/check-match?userId1=${userToCheckId}&Id2=${userId}`
+      `/api/v1/match/check-match?userId1=${userToCheckId}&userId2=${userId}`
     );
-    return response;
+    var text = await response.text();
+    console.log(text );
+    var bool = text === "true";
+    return bool;
   }
 }

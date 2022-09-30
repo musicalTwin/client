@@ -60,7 +60,7 @@ function Home() {
 
   function setMatch() {
     var coso = new SpotifyHandler(token);
-    coso.setMatch(383, true, "21u4ax3hxvenml3p7kdvrjlba");
+    coso.setMatch(2, true, "31ypjzitriimy4b2fhfhu5enh4w4");
   }
 
   return (

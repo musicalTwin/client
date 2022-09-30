@@ -2,125 +2,61 @@ import React, { useState, useMemo, useRef } from "react";
 import TinderCard from "react-tinder-card";
 import "../styles/Home.css";
 import Card from "react-bootstrap/Card";
+import { SpotifyHandler } from "../api/SpotifyHandler";
+import Cookie from "js-cookie";
 
 const MatchingPart = (props) => {
-  const db = props.db;
+  var db = props.db;
+  db = [].concat(db).reverse();
+
   console.log(db);
+  var coso = new SpotifyHandler(Cookie.get("spotifyAuthToken"));
 
-  const [currentIndex, setCurrentIndex] = useState(db.length - 1);
-  const [lastDirection, setLastDirection] = useState();
-  // used for outOfFrame closure
-  const currentIndexRef = useRef(currentIndex);
+  async function setMatch(cardId, match, userId) {
+    await coso.setMatch(cardId, match);
+  }
 
-  const childRefs = useMemo(
-    () =>
-      Array(db.length)
-        .fill(0)
-        .map((i) => React.createRef()),
-    [db.length]
-  );
+  async function swipe(direction, obj) {
+    if (direction === "left") {
+      await setMatch(obj.id, false);
+    } else if (direction === "right") {
+      await setMatch(obj.id, true);
 
-  const updateCurrentIndex = (val) => {
-    setCurrentIndex(val);
-    currentIndexRef.current = val;
-  };
-
-  const canGoBack = currentIndex < db.length - 1;
-
-  const canSwipe = currentIndex >= 0;
-
-  // set last direction and decrease current index
-  const swiped = (direction, nameToDelete, index) => {
-    setLastDirection(direction);
-    updateCurrentIndex(index - 1);
-  };
-
-  const outOfFrame = (name, idx) => {
-    console.log(`${name} (${idx}) left the screen!`, currentIndexRef.current);
-    // handle the case in which go back is pressed before card goes outOfFrame
-    currentIndexRef.current >= idx && childRefs[idx].current.restoreCard();
-    // TODO: when quickly swipe and restore multiple times the same card,
-    // it happens multiple outOfFrame events are queued and the card disappear
-    // during latest swipes. Only the last outOfFrame event should be considered valid
-  };
-
-  const swipe = async (dir) => {
-    if (canSwipe && currentIndex < db.length) {
-      await childRefs[currentIndex].current.swipe(dir); // Swipe the card!
+      var itsAMatch = await coso.checkIfMatched(obj.user.id);
+      console.log(itsAMatch);
+      if (itsAMatch === true) {
+        alert("non ci possoc redere zio ha itrovato l;'amore della tua vita");
+      } else {
+        console.log("Non è un match");
+      }
+    } else {
+      console.log("Il bro ha ?? what", direction);
     }
-  };
-
-  // increase current index and show card
-  const goBack = async () => {
-    if (!canGoBack) return;
-    const newIndex = currentIndex + 1;
-    updateCurrentIndex(newIndex);
-    await childRefs[newIndex].current.restoreCard();
-  };
+  }
 
   return (
-    // <div className="content">
-    <div id="main">
-      <link
-        href="https://fonts.googleapis.com/css?family=Damion&display=swap"
-        rel="stylesheet"
-      />
-      <link
-        href="https://fonts.googleapis.com/css?family=Alatsi&display=swap"
-        rel="stylesheet"
-      />
-      <h1>MusicalTwin</h1>
-      <div className="cardContainer">
-        {db.map((character, index) => (
+    <div className="cardContainer">
+      {db.map((obj, index) => {
+        return (
           <TinderCard
-            ref={childRefs[index]}
-            className="swipe"
-            key={character.user.username}
-            onSwipe={(dir) => swiped(dir, character.user.username, index)}
-            onCardLeftScreen={() => outOfFrame(character.user.username, index)}
+            key={obj.user.id}
+            onSwipe={(direction) => swipe(direction, obj)}
+            className="cardOverlay"
           >
-            <Card
-              style={{ width: "18rem", top: 0, left: 0, position: "absolute" }}
-            >
-              <Card.Img variant="top" src="./salvini.jpg" />
+            <Card className="card">
               <Card.Body>
-                <Card.Title>{character.user.username}</Card.Title>
+                <Card.Img
+                  src="./stock.jpg"
+                  variant="top"
+                  className="cardImage"
+                />
+                <Card.Title>{obj.user.username}</Card.Title>
               </Card.Body>
             </Card>
           </TinderCard>
-        ))}
-      </div>
-      <div className="buttons">
-        <button
-          style={{ backgroundColor: !canSwipe && "#c3c4d3" }}
-          onClick={() => swipe("left")}
-        >
-          Swipe left!
-        </button>
-        <button
-          style={{ backgroundColor: !canGoBack && "#c3c4d3" }}
-          onClick={() => goBack()}
-        >
-          Undo swipe!
-        </button>
-        <button
-          style={{ backgroundColor: !canSwipe && "#c3c4d3" }}
-          onClick={() => swipe("right")}
-        >
-          Swipe right!
-        </button>
-      </div>
-      {lastDirection ? (
-        <h2 key={lastDirection} className="infoText">
-          You swiped {lastDirection}
-        </h2>
-      ) : (
-        <h2 className="infoText">
-          Swipe a card or press a button to get Restore Card button visible!
-        </h2>
-      )}
+        );
+      })}
     </div>
-    // </div>
   );
 };
 
