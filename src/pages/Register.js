@@ -15,19 +15,25 @@ function Register() {
   // that's used to determine whether or not the user selected at least an intrested gender
   const [intrestedGenderCounter, setintrestedGenderCounter] = useState(0);
 
+  const [spotifyHandler, setSpotifyHandler] = useState();
+
   function aggiungiGeneriInteressati() {
-    var initializer = new SpotifyHandler(token);
-    return initializer.addIntrestedToGender(intrestedGender);
+    spotifyHandler.addIntrestedToGender(intrestedGender);
   }
 
   function aggiungiGeneri() {
-    var initializer = new SpotifyHandler(token);
-    initializer.addUserGenres();
+    spotifyHandler.addUserGenres();
   }
 
   function registraUtente() {
-    var initializer = new SpotifyHandler(token);
-    initializer.registerUser(username, gender);
+    spotifyHandler.registerUser(username, gender);
+  }
+  function aggiungiTopArtisti() {
+    spotifyHandler.addUserArtists();
+  }
+
+  function aggiungiTopCanzoni() {
+    spotifyHandler.addUserSongs();
   }
 
   // add error handler: https://reactjs.org/docs/faq-ajax.html
@@ -39,16 +45,21 @@ function Register() {
       });
 
     creation();
-  }, []);
+
+    setSpotifyHandler(new SpotifyHandler(token));
+  }, [token]);
 
   // this sends the user informations to the server(if the user checked all the infos)
   function injector() {
     if (intrestedGenderCounter > 0) {
       try {
-        aggiungiGeneri();
         registraUtente();
         aggiungiGeneriInteressati();
-        window.location = "home";
+        aggiungiGeneri();
+        aggiungiTopCanzoni();
+        aggiungiTopArtisti();
+
+        // window.location = "home";
       } catch (error) {
         alert("dai");
       }

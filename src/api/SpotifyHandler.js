@@ -38,6 +38,28 @@ export class SpotifyHandler {
     return genres;
   }
 
+  async getTopArtists() {
+    var artists = [];
+    var topArtist = await this.spotify.getMyTopArtists();
+
+    topArtist.items.map((item) => {
+      return artists.push(item.id);
+    });
+
+    return artists;
+  }
+
+  async getTopSongs() {
+    var songs = [];
+    var topItems = await this.spotify.getMyTopTracks();
+
+    topItems.items.map((item) => {
+      return songs.push(item.id);
+    });
+
+    return songs;
+  }
+
   async getUsers() {
     var users = await fetch("/api/v1/users");
     return users.json();
@@ -76,13 +98,34 @@ export class SpotifyHandler {
 
   async addUserGenres(userId) {
     var genresList = await this.getGenres();
-    userId = userId || (await this.spotify.getMe()).id; //se non lo passi lo ricava da solo
+    userId = userId || (await this.getId()); //se non lo passi lo ricava da solo
     var body = {
       id: [userId],
       genres: genresList,
     };
-    await this.sendPostRequest("/api/v1/user-genres", JSON.stringify(body));
-    console.log("Fatta la richiesta");
+    await this.sendPostRequest("/api/v1/users-genres", JSON.stringify(body));
+  }
+
+  async addUserArtists(userId) {
+    var artistList = await this.getTopArtists();
+    userId = userId || (await this.getId()); //se non lo passi lo ricava da solo
+
+    var body = {
+      id: [userId],
+      artists: artistList,
+    };
+    await this.sendPostRequest("/api/v1/users-artists", JSON.stringify(body));
+  }
+
+  async addUserSongs(userId) {
+    var songList = await this.getTopSongs();
+    userId = userId || (await this.getId());
+
+    var body = {
+      id: [userId],
+      songs: songList,
+    };
+    await this.sendPostRequest("/api/v1/users-songs", JSON.stringify(body));
   }
 
   async registerUser(username, genderId, userId) {
@@ -132,7 +175,7 @@ export class SpotifyHandler {
 
   async getUserGenre(userId) {
     userId = userId || (await this.getId()); //se non lo passi lo ricava da solo
-    var response = await fetch(`/api/v1/user-genres/${userId}`);
+    var response = await fetch(`/api/v1/users-genres/${userId}`);
     var text = await response.text();
     var obj = JSON.parse(text);
     return obj.slice(0, 3);

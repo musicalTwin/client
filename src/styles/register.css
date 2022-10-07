@@ -25,7 +25,9 @@
   font-family: "CircularSpotifyText-book";
   src: url("./fonts/CircularSpotifyText-Book.otf") format("opentype");
 }
-
+body {
+  height: 150vh;
+}
 :root {
   --BackGroundColor: #111111;
   --TextWhite: #ffffff;
@@ -45,7 +47,7 @@
 
 .Register {
   width: 100wh;
-  height: 100vh;
+  height: 150vh;
   background: repeating-linear-gradient(
     45deg,
     var(--SpotifyGreen),

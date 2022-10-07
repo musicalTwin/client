@@ -69,6 +69,16 @@ function Home() {
     console.log(giovanni);
   }
 
+  async function getTopArtist() {
+    var coso = new SpotifyHandler(token);
+    await coso.addUserArtists();
+  }
+
+  async function getTopSongs() {
+    var coso = new SpotifyHandler(token);
+    await coso.addUserSongs();
+  }
+
   return (
     <div>
       {token ? (
@@ -88,6 +98,8 @@ function Home() {
           </button>
           <button onClick={setMatch}>match</button>
           <button onClick={getGenres}>fois</button>
+          <button onClick={getTopArtist}>Top artist</button>
+          <button onClick={getTopSongs}>Top Songs</button>
         </div>
       ) : (
         <SpotifyAuth
