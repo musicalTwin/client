@@ -3,7 +3,7 @@ import { SpotifyHandler } from "../api/SpotifyHandler";
 import { creation } from "../utils/CreationHandler";
 import Cookies from "js-cookie";
 import CheckBox from "../components/CheckBox";
-import "../styles/Register.css";
+import "../styles/register.css";
 function Register() {
   const [token, setToken] = useState(Cookies.get("spotifyAuthToken"));
   const [genders, setGenders] = useState([]);
