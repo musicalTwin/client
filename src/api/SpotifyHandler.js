@@ -8,12 +8,12 @@ export class SpotifyHandler {
   }
 
   async getId() {
-    var userId = Cookie.get("userId");
-    if (userId === undefined) {
-      var userObj = await this.spotify.getMe();
-      userId = userObj.id;
-      Cookie.set("userId", userId);
-    }
+    // var userId = Cookie.get("userId");
+    // if (userId === undefined) {
+    var userObj = await this.spotify.getMe();
+    var userId = userObj.id;
+    //   Cookie.set("userId", userId);
+    // }
     return userId;
   }
 
