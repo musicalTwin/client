@@ -37,11 +37,11 @@
 .LoginPage {
   /* background-color: var(--BackGroundColor); */
   height: 100vh;
-  width: 100%;
+  width: 100wh;
   margin: 0;
   background: linear-gradient(
       -45deg,
-      rgba(6, 6, 6, 1) 5%,
+      rgb(48, 79, 35) 5%,
       rgba(27, 199, 89, 1) 100%
     )
     no-repeat;
@@ -52,8 +52,9 @@
 
 .Title {
   padding-top: 15%;
-  font-size: 8vh;
-  padding-bottom: 2%;
+  font-size: 110px;
+  font-weight: 900;
+  /* padding-bottom: 2%; */
   font-family: "CircularSpotifyText-book";
   color: var(--TextWhite);
   text-align: center;

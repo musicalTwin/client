@@ -68,7 +68,7 @@ function Login() {
 
   return (
     <div className="LoginPage">
-      <h1 className="Title center">MusicalTwin</h1>
+      <h1 className="Title center">Musical Twin</h1>
       <h2 className="Slogan center">
         Find someone with the same musical taste as yours.
       </h2>
