@@ -5,7 +5,7 @@ import { SpotifyHandler } from "../api/SpotifyHandler";
 import { CreationHandler } from "../utils/CreationHandler";
 
 import "react-spotify-auth/dist/index.css";
-import "../styles/Login.css";
+// import "../styles/Login.css";
 
 function Login() {
   const [token, setToken] = useState(Cookies.get("spotifyAuthToken"));

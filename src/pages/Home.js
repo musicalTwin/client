@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { creation } from "../utils/CreationHandler";
 import { SpotifyHandler } from "../api/SpotifyHandler";
-import "../styles/Home.css";
+// import "../styles/Home.css";
 import MatchingPart from "../components/MatchingPart";
 import LoadingSpinner from "../components/LoadingSpinner";
 

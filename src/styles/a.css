@@ -1,0 +1,198 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Fonts(if it wasn't obvious) */
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+@font-face {
+  font-family: "CircularSpotifyText-light";
+  src: url("./fonts/CircularSpotifyText-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "CircularSpotifyText-medium";
+  src: url("./fonts/CircularSpotifyText-Medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "CircularSpotifyText-bold";
+  src: url("./fonts/CircularSpotifyText-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "CircularSpotifyText-book";
+  src: url("./fonts/CircularSpotifyText-Book.otf") format("opentype");
+}
+body {
+  height: 150vh;
+}
+:root {
+  --BackGroundColor: #111111;
+  --TextWhite: #ffffff;
+  --SpotifyGreen: #01ca58;
+  --SpotifyDarkerGreen: #1b7832;
+  --DarkBlack: #060606;
+  --DarkGreen: #00fd5900;
+  --cardWidth: 300px;
+  --cardHeight: 360px;
+}
+
+/*  */
+
+.optionTile {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.Register {
+  width: 100wh;
+  height: 150vh;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--SpotifyGreen),
+    var(--SpotifyDarkerGreen)
+  );
+  background-size: 600% 100%;
+  animation: gradient1 3s linear infinite;
+  animation-direction: alternate;
+}
+
+@keyframes gradient1 {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+
+.RegistrationHeader {
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.RegistrationHeader h1 {
+  font-family: CircularSpotifyText-book;
+  color: var(--TextWhite);
+  text-align: center;
+  font-size: 80px;
+}
+
+form {
+  font-family: CircularSpotifyText-medium;
+  width: 500px;
+  min-height: 500px;
+  height: auto;
+  border-radius: 10px;
+  margin: auto;
+  background-color: var(--DarkGreen);
+  /* background-image: linear-gradient(-225deg, var(--DarkBlack) 50%, var(--SpotifyGreen) 50%); */
+  padding: 3%;
+  color: var(--TextWhite);
+  transition-duration: 2s;
+  box-shadow: 0 9px 50px hsla(0, 0%, 0%, 0.6);
+}
+
+.Registration {
+  text-align: center;
+}
+
+.InputField {
+  width: 200px;
+  margin: auto;
+}
+
+.Registration h1 {
+  font-size: 40px;
+  color: var(--TextWhite);
+  opacity: 0.9;
+}
+
+.RegisterForm {
+  display: block;
+  text-align: center;
+}
+
+.UselessDiv {
+}
+
+.FormCheckbox {
+  bottom: 0.25em;
+  position: relative;
+  margin-left: 3px;
+}
+
+.Registration p {
+  font-size: 20px;
+  font-family: CircularSpotifyText-light;
+  color: var(--TextWhite);
+  /* opacity: 0.8; */
+}
+.form-input {
+  margin-bottom: 15px;
+}
+
+.form-input::placeholder {
+  color: black;
+}
+
+.form-input,
+.SocialInput,
+.SubmitForm,
+select {
+  /* color: var(--DarkBlack); */
+  /* background-color: var(--TextWhite); */
+  width: 200px;
+  /* height: 15px; */
+  margin-top: 2%;
+  padding: 15px;
+  font-size: 16px;
+  /* font-family: 'Abel', sans-serif; */
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  transition: 0.2s linear;
+}
+
+input {
+  box-sizing: border-box;
+}
+
+.CheckContainer {
+  display: flex;
+  text-align: left;
+  margin-left: 5px;
+}
+
+.FormText {
+  padding-top: 10px;
+  font-size: 20px;
+  font-family: CircularSpotifyText-light;
+}
+
+.SubmitForm {
+  background-color: var(--SpotifyGreen);
+  color: var(--TextWhite);
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+
+.SubmitForm:hover {
+  transform: translatey(4px);
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+::placeholder {
+  color: var(--DarkGreen);
+}
+
+/* focus  */
+
+input:focus {
+  transform: translateX(-1px);
+  border-radius: 4px;
+}
