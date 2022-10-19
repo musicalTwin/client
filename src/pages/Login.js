@@ -3,6 +3,8 @@ import { SpotifyAuth } from "react-spotify-auth";
 import Cookies from "js-cookie";
 import { SpotifyHandler } from "../api/SpotifyHandler";
 import { CreationHandler } from "../utils/CreationHandler";
+import NavBar from "../components/navbar";
+
 
 import "react-spotify-auth/dist/index.css";
 import "../styles/Login.css";
@@ -67,11 +69,19 @@ function Login() {
   });
 
   return (
+    
+ 
+    
     <div className="LoginPage">
-      <h1 className="Title center">MusicalTwin</h1>
-      <h2 className="Slogan center">
-        Find someone with the same musical taste as yours.
-      </h2>
+
+      <NavBar />
+
+      <div class="TextContainer">
+        <h1 class="MainText">MusicalTwin</h1>
+        <h2 class="Slogan">Find your Musical-Twin</h2>
+      </div>
+
+
 
       {token ? (
         // if there's a token it shows the div, otherwise it shows the button
@@ -79,12 +89,15 @@ function Login() {
       ) : (
         //  SpotifyAuth login button
 
-        <div className="AuthButtonContainer">
+        <div className="container">
+          <div className="LoginContainer">
           <SpotifyAuth
-            btnClassName="AuthButton"
+            btnClassName="LoginButton"
             onAccessToken={(token) => {
               setToken(token);
             }}
+            title="Continue"
+            noLogo="true"
             redirectUri="http://localhost:3000/login"
             clientID="4a8a038032414b9a8c7ca838266cc689"
             scopes={[
@@ -96,8 +109,14 @@ function Login() {
               "user-library-read",
             ]}
           />
+          </div>
         </div>
+
+        
       )}
+      <div class="footer">
+        <p>Made with ♥</p>
+    </div>
     </div>
   );
 }
