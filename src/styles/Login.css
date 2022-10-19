@@ -3,106 +3,216 @@
   padding: 0;
 }
 
-/* Fonts(if it wasn't obvious) */
-
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
-@font-face {
-  font-family: "CircularSpotifyText-light";
-  src: url("fonts/CircularSpotifyText-Light.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "CircularSpotifyText-medium";
-  src: url("fonts/CircularSpotifyText-Medium.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "CircularSpotifyText-bold";
-  src: url("fonts/CircularSpotifyText-Bold.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "CircularSpotifyText-book";
-  src: url("fonts/CircularSpotifyText-Book.otf") format("opentype");
-}
-
-:root {
-  --BackGroundColor: #111111;
-  --TextWhite: #ffffff;
-  --SpotifyGreen: #1bc759;
-  --DarkBlack: #060606;
-  --DarkGreen: #0c3d1d;
-}
-
-.LoginPage {
-  /* background-color: var(--BackGroundColor); */
+body {
+  background-color: black;
+  font-family: circular-bold;
   height: 100vh;
-  width: 100wh;
+}
+
+@font-face {
+  font-family: circular-bold;
+  src: url(./fonts/CircularSpotifyText-Bold.otf);
+}
+
+@font-face {
+  font-family: circular-medium;
+  src: url(./fonts/CircularSpotifyText-Medium.otf);
+}
+
+@font-face {
+  font-family: circular-light;
+  src: url(./fonts/CircularSpotifyText-Light.otf);
+}
+
+/* navbar               */
+
+.right {
+  float: right;
+}
+
+ul {
+  list-style-type: none;
   margin: 0;
-  background: linear-gradient(
-      -45deg,
-      rgb(48, 79, 35) 5%,
-      rgba(27, 199, 89, 1) 100%
-    )
-    no-repeat;
-  background-size: 200% 200%;
-  background-position: 0 -50%;
-  animation: gradient 10s ease infinite;
+  padding: 15px;
+  font-family: circular-bold;
+  overflow: hidden;
+  background-color: black;
+  /* border-bottom: 4px solid white; */
 }
 
-.Title {
-  padding-top: 15%;
-  font-size: 110px;
-  font-weight: 900;
-  /* padding-bottom: 2%; */
-  font-family: "CircularSpotifyText-book";
-  color: var(--TextWhite);
+li {
+  float: left;
+}
+
+li:last-child {
+  border-right: none;
+}
+
+li a {
+  display: block;
+  color: white;
   text-align: center;
+  padding: 12px 16px;
+  text-decoration: none;
 }
 
-.Slogan {
-  font-size: 3vh;
-  color: var(--TextWhite);
-  font-family: "CircularSpotifyText-light";
-  opacity: 0.8;
-  text-align: center;
-}
-
-.AuthButtonContainer {
-  margin-top: 10vh;
-  display: flex;
-  justify-content: center;
-}
-
-.AuthButton {
-  color: var(--TextWhite);
-  background-color: var(--BackGroundColor);
-  display: flex;
-  align-items: center;
-  padding: 1em;
-  border-radius: 1em;
-  font-size: 1em;
-  /* box-shadow: none|h-offset v-offset blur spread color |inset|initial|inherit */
-  box-shadow: 0.4em 0.2em 1em var(--DarkBlack);
-  -webkit-transition-duration: 1s;
-  transition-duration: 1s;
-}
-
-.AuthButton:hover {
-  box-shadow: 0.4em 0.2em 1em var(--TextWhite);
-  -webkit-transition-duration: 1s;
-  transition-duration: 1s;
+li a:hover {
+  opacity: 0.9;
+  opacity: 0.9;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
   cursor: pointer;
 }
 
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
+/* 
+.active {
+border-radius: 10px;
+background-color: white;
+color: black;
+} */
+
+/* -------------------------------------- */
+
+/* content */
+
+.TextContainer {
+  position: relative;
+  text-align: center;
+  height: 450px;
+  /* background-color: red; */
+}
+
+.MainText {
+  font-size: 80px;
+  align-items: center;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+}
+
+.Slogan {
+  font-size: 40px;
+  opacity: 0.8;
+  font-family: circular-light;
+  align-items: center;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  padding-top: 90px;
+  transform: translateY(-50%);
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+}
+
+/* Button                               */
+
+.container {
+  height: 300px;
+  width: fit-content;
+  margin: 0 auto;
+  top: 0;
+  left: 0;
+  position: relative;
+}
+
+.LoginContainer {
+}
+
+.LoginButton {
+  cursor: pointer;
+  display: block;
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  text-decoration: none;
+  color: white;
+  border: 0.9px solid white;
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  transition: all 0.35s;
+  border-radius: 6px;
+  background-color: black;
+}
+
+.LoginButton span {
+  position: relative;
+  z-index: 2;
+}
+
+.LoginButton:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: white;
+  transition: all 0.35s;
+}
+
+.LoginButton:hover {
+  color: black;
+}
+
+.LoginButton:hover:after {
+  width: 100%;
+  border-radius: 2px;
+}
+
+/* -------------------------------------------------------- */
+
+/* footer */
+
+.footer {
+  height: 40px;
+}
+
+.footer p {
+  padding-top: 5px;
+  text-align: center;
+  opacity: 0.8;
+  font-size: 15px;
+  color: white;
+}
+
+/* -------------- */
+
+/* bah diciamo responsive */
+
+@media screen and (max-width: 650px) {
+  .MainText {
+    font-size: 60px;
   }
-  50% {
-    background-position: 100% 50%;
+  .Slogan {
+    font-size: 30px;
   }
-  100% {
-    background-position: 0% 50%;
+}
+
+@media screen and (max-width: 400px) {
+  .MainText {
+    font-size: 50px;
+  }
+  .Slogan {
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .MainText {
+    font-size: 40px;
+  }
+  .Slogan {
+    font-size: 25px;
+  }
+  .LoginPage ul {
+    font-size: 13px;
   }
 }

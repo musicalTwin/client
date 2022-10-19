@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Register.css";
 import CheckBox from "../components/CheckBox";
+import NavBar from "../components/navbar";
 
 function Register() {
   const [genders, setGenders] = useState([]);
@@ -22,6 +23,7 @@ function Register() {
   }, []);
   return (
     <div className="container">
+      <NavBar />
       <div className="TextContainerWrapper">
         <div className="TextContainer">
           <h1 className="MainText">Dai zio dacci le tue informazioni</h1>
