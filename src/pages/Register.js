@@ -21,8 +21,8 @@ function Register() {
     spotifyHandler.addIntrestedToGender(intrestedGender);
   }
 
-  function aggiungiGeneri() {
-    spotifyHandler.addUserGenres();
+  async function aggiungiGeneri() {
+    await spotifyHandler.addUserGenres();
   }
 
   function registraUtente() {
@@ -50,12 +50,12 @@ function Register() {
   }, [token]);
 
   // this sends the user informations to the server(if the user checked all the infos)
-  function injector() {
+  async function injector() {
     if (intrestedGenderCounter > 0) {
       try {
         registraUtente();
         aggiungiGeneriInteressati();
-        aggiungiGeneri();
+        await aggiungiGeneri();
         aggiungiTopCanzoni();
         aggiungiTopArtisti();
 
@@ -71,12 +71,7 @@ function Register() {
   // tests all the parameters to submit
   function testingParameters() {
     console.log("Injected parameters: ", gender, username, intrestedGender);
-    console.log(
-      "Injected parameters types: ",
-      typeof gender,
-      typeof username,
-      typeof intrestedGender
-    );
+    console.log(token);
     console.log(intrestedGenderCounter);
   }
 
