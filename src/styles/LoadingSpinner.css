@@ -14,10 +14,10 @@ body {
   stroke-linejoin: round;
 }
 .loading svg polyline#back {
-  stroke: rgba(110, 242, 187, 0.3);
+  stroke: rgba(147, 151, 149, 0.3);
 }
 .loading svg polyline#front {
-  stroke: #6ef279;
+  stroke: #ffffff;
   stroke-dasharray: 12, 36;
   stroke-dashoffset: 48;
   animation: dash 1s linear infinite;

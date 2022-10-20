@@ -59,7 +59,7 @@ function Register() {
         aggiungiTopCanzoni();
         aggiungiTopArtisti();
 
-        window.location = "home";
+        // window.location = "home";
       } catch (error) {
         alert("dai");
       }
