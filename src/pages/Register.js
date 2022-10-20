@@ -6,7 +6,6 @@ import { creation } from "../utils/CreationHandler";
 import NavBar from "../components/navbar";
 import Cookies from "js-cookie";
 
-
 function Register() {
   const [token, setToken] = useState(Cookies.get("spotifyAuthToken"));
 
@@ -18,7 +17,6 @@ function Register() {
   const [intrestedGenderCounter, setintrestedGenderCounter] = useState(0);
 
   const [spotifyHandler, setSpotifyHandler] = useState();
-
 
   function aggiungiGeneriInteressati() {
     spotifyHandler.addIntrestedToGender(intrestedGender);
@@ -49,7 +47,7 @@ function Register() {
         aggiungiTopArtisti();
 
         // window.location = "home";
-        console.log("home")
+        console.log("home");
       } catch (error) {
         alert("dai");
       }
@@ -76,10 +74,7 @@ function Register() {
       <div className="RegisterContainer">
         <div className="RegisterTextContainerWrapper">
           <div className="RegisterTextContainer">
-            <h1 className="RegisterMainText">
-              
-              Give us all your data:&#41;
-              </h1>
+            <h1 className="RegisterMainText">Give us all your data :&#41;</h1>
           </div>
         </div>
         <div className="RegisterFormContainer">
@@ -93,7 +88,10 @@ function Register() {
           >
             <div className="RegisterInput-Row BottomRow">
               <div className="RegisterName-Input">
-                <label htmlFor="name-input" className="Registername-input-label">
+                <label
+                  htmlFor="name-input"
+                  className="Registername-input-label"
+                >
                   Name
                 </label>
                 <input
@@ -101,7 +99,6 @@ function Register() {
                   id="name-input"
                   placeholder="Insert your name..."
                   className="Registername-input"
-                  
                 />
               </div>
               <div className="RegisterUser-Gender-Input">
@@ -198,19 +195,14 @@ function Register() {
             </div>
             <div className="RegisterButton">
               <input
-              type="submit"
-              // onClick={alert("papà")}
-              className="btn btn-dark btn-mid"
-              value="Submit"
-              >
-              </input>
+                type="submit"
+                // onClick={alert("papà")}
+                className="btn btn-dark btn-mid"
+                value="Submit"
+              ></input>
             </div>
-            
           </form>
         </div>
-
-        
-
       </div>
     </div>
   );
