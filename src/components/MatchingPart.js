@@ -15,6 +15,9 @@ const MatchingPart = (props) => {
       username: "Loading",
     },
   });
+  var db = props.db;
+  db = [].concat(db).reverse();
+
   const [currentIndex, setCurrentIndex] = useState(db.length - 1);
   const [lastDirection, setLastDirection] = useState();
   const currentIndexRef = useRef(currentIndex);
@@ -36,7 +39,7 @@ const MatchingPart = (props) => {
 
   const canSwipe = currentIndex >= 0;
 
-  async function swiped(direction, index) {
+  async function swiped(direction, obj, index) {
     if (direction === "left") {
       await setMatch(obj.id, false);
     } else if (direction === "right") {
@@ -69,9 +72,6 @@ const MatchingPart = (props) => {
     updateCurrentIndex(newIndex);
     await childRefs[newIndex].current.restoreCard();
   };
-
-  var db = props.db;
-  db = [].concat(db).reverse();
 
   var coso = new SpotifyHandler(Cookie.get("spotifyAuthToken"));
 
@@ -156,7 +156,7 @@ const MatchingPart = (props) => {
               <TinderCard
                 key={obj.user.id}
                 onSwipe={(direction) => {
-                  swiped(direction, obj);
+                  swiped(direction, obj, index);
                   if (index + 1 === 0) {
                     setEmpty(true);
                   }
