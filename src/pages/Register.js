@@ -19,7 +19,7 @@ function Register() {
 
     // creation();
 
-    // setSpotifyHandler(new SpotifyHandler(token));
+    // setSpotifyHandler(new SpotifyHandler(token)) ;
   }, []);
   return (
     <div className="">
