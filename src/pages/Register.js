@@ -16,7 +16,9 @@ function Register() {
   const [intrestedGender, setIntrestedGender] = useState([]);
   const [intrestedGenderCounter, setintrestedGenderCounter] = useState(0);
 
-  const [spotifyHandler, setSpotifyHandler] = useState();
+  const [spotifyHandler, setSpotifyHandler] = useState(
+    new SpotifyHandler(token)
+  );
 
   function aggiungiGeneriInteressati() {
     spotifyHandler.addIntrestedToGender(intrestedGender);
@@ -49,10 +51,11 @@ function Register() {
         // window.location = "home";
         console.log("home");
       } catch (error) {
+        console.log(error);
         alert("dai");
       }
     } else {
-      alert("Complete all the parameters first!");
+      alert("Inserisci almeno un genere alla quale sei interessato!");
     }
   }
 
@@ -83,7 +86,8 @@ function Register() {
             className="RegisterSingIn-Form"
             onSubmit={(e) => {
               e.preventDefault();
-              console.log(e.target.elements);
+              injector();
+              // console.log(e.target.elements);
             }}
           >
             <div className="RegisterInput-Row BottomRow">
@@ -95,10 +99,12 @@ function Register() {
                   Name
                 </label>
                 <input
+                  required
                   type="text"
                   id="name-input"
                   placeholder="Insert your name..."
                   className="Registername-input"
+                  onChange={(event) => setUsername(event.target.value)}
                 />
               </div>
               <div className="RegisterUser-Gender-Input">

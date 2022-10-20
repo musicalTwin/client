@@ -352,6 +352,6 @@ input[type="submit"]:hover,
     height: 1.8em;
   }
   .RegisterFormContainer {
-    height: 130vh;
+    height: 100vh;
   }
 }
