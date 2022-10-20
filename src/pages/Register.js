@@ -1,14 +1,62 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Register.css";
 import CheckBox from "../components/CheckBox";
+import { SpotifyHandler } from "../api/SpotifyHandler";
+import { creation } from "../utils/CreationHandler";
 import NavBar from "../components/navbar";
+import Cookies from "js-cookie";
+
 
 function Register() {
+  const [token, setToken] = useState(Cookies.get("spotifyAuthToken"));
+
   const [genders, setGenders] = useState([]);
   const [gender, setGender] = useState([]);
 
+  const [username, setUsername] = useState([]);
   const [intrestedGender, setIntrestedGender] = useState([]);
   const [intrestedGenderCounter, setintrestedGenderCounter] = useState(0);
+
+  const [spotifyHandler, setSpotifyHandler] = useState();
+
+
+  function aggiungiGeneriInteressati() {
+    spotifyHandler.addIntrestedToGender(intrestedGender);
+  }
+
+  async function aggiungiGeneri() {
+    await spotifyHandler.addUserGenres();
+  }
+
+  function registraUtente() {
+    spotifyHandler.registerUser(username, gender);
+  }
+  function aggiungiTopArtisti() {
+    spotifyHandler.addUserArtists();
+  }
+
+  function aggiungiTopCanzoni() {
+    spotifyHandler.addUserSongs();
+  }
+
+  async function injector() {
+    if (intrestedGenderCounter > 0) {
+      try {
+        registraUtente();
+        aggiungiGeneriInteressati();
+        await aggiungiGeneri();
+        aggiungiTopCanzoni();
+        aggiungiTopArtisti();
+
+        // window.location = "home";
+        console.log("home")
+      } catch (error) {
+        alert("dai");
+      }
+    } else {
+      alert("Complete all the parameters first!");
+    }
+  }
 
   useEffect(() => {
     fetch("/api/v1/genders")
@@ -28,7 +76,10 @@ function Register() {
       <div className="RegisterContainer">
         <div className="RegisterTextContainerWrapper">
           <div className="RegisterTextContainer">
-            <h1 className="RegisterMainText">Dai zio dacci le tue informazioni</h1>
+            <h1 className="RegisterMainText">
+              
+              Give us all your data:&#41;
+              </h1>
           </div>
         </div>
         <div className="RegisterFormContainer">
@@ -40,7 +91,7 @@ function Register() {
               console.log(e.target.elements);
             }}
           >
-            <div className="RegisterInput-Row">
+            <div className="RegisterInput-Row BottomRow">
               <div className="RegisterName-Input">
                 <label htmlFor="name-input" className="Registername-input-label">
                   Name
@@ -50,6 +101,7 @@ function Register() {
                   id="name-input"
                   placeholder="Insert your name..."
                   className="Registername-input"
+                  
                 />
               </div>
               <div className="RegisterUser-Gender-Input">
@@ -98,11 +150,11 @@ function Register() {
                 </select>
               </div>
             </div>
-            <div className="RegisterInput-Row">
+            <div className="RegisterInput-Row BottomRow">
               <div className="RegisterUser-InterestedIn-Gender">
                 <label
                   htmlFor="user-gender-input"
-                  className="Registeruser-gender-input-label"
+                  className="Registeruser-gender-input-label BottomGenderInputLabel"
                 >
                   Interested into
                 </label>
@@ -132,20 +184,33 @@ function Register() {
                               setIntrestedGender(tempList);
                             }}
                           />
-                          <label
+                          {/* <label
                             className="RegisterFormCheckbox"
                             htmlFor={gender.id.toString()}
                           >
                             {gender.name}
-                          </label>
+                          </label> */}
                         </div>
                       </div>
                     ))
                   : console.log("Can't load genders yet")}
               </div>
             </div>
+            <div className="RegisterButton">
+              <input
+              type="submit"
+              // onClick={alert("papà")}
+              className="btn btn-dark btn-mid"
+              value="Submit"
+              >
+              </input>
+            </div>
+            
           </form>
         </div>
+
+        
+
       </div>
     </div>
   );

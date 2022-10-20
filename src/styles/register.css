@@ -1,142 +1,352 @@
-@font-face {
-    font-family: circular-bold;
-    src: url(./fonts/CircularStd-Bold.otf);
-}
-
-@font-face {
-    font-family: circular-medium;
-    src: url(./fonts/CircularStd-Medium.otf);
-}
-
-@font-face {
-    font-family: circular-light;
-    src: url(./fonts/CircularStd-Light.otf);
-}
-
-body {
-    background-color: black;
-    font-family: circular-bold;
-    height: 80vh;
-}
-
-.RegisterContainer {
-    width: 100wh;
-    flex-direction: row;
-    display: flex;
-}
-
-
-/* Title Section */
-
-.RegisterTextContainerWrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 50vh;
-    width: 30%;
-    justify-content: space-between;
-}
-
-.RegisterTextContainer {}
-
-.RegisterSingIn-Form {
-    margin-top: 100px;
-    width: 100%;
-}
-
-.RegisterMainText {
-    font-size: 60px;
-    vertical-align: middle;
-    color: white;
-    padding: 200px 0px 0px 30px;
-}
-
-
-/* Title Section */
-
-
-/* Form styling */
-
-.RegisterFormContainer {
-    background-color: rgb(255, 255, 255);
-    width: 70%;
-    height: 100vh;
-    display: flex;
-    border-radius: 20px;
-}
-
-.RegisterInput-Row {
-    display: flex;
-    margin: 60px;
-    width: 80%;
-    justify-content: space-between;
-}
-
-.RegisterName-Input {
-    display: flex;
-    flex-direction: column;
-    /* margin-right: 80px; */
-}
-
-.Registername-input-label {
-    color: rgb(0, 0, 0);
-    font-size: 50px;
-}
-
-.Registername-input {
-    height: 38px;
-    width: 300px;
-    background-color: rgba(51, 51, 51, 0.404);
-    border: 0;
-    color: rgb(0, 0, 0);
-    font-family: circular-medium;
-    font-size: 26px;
-    padding-left: 10px;
-}
-
-.Registername-input::placeholder {
-    color: rgb(0, 0, 0);
-    font-family: circular-medium;
-    font-size: 26px;
-}
-
-.Registername-input:focus {
-    outline: 0;
-}
-
-.RegisterUser-Gender-Input {
-    display: flex;
-    flex-direction: column;
-}
-
-.Registeruser-gender-input-label {
-    color: rgb(0, 0, 0);
-    font-size: 50px;
-}
-
-.RegisterUserGenderSelector {
-    height: 40px;
-    width: 312px;
-    background-color: rgba(51, 51, 51, 0.404);
-    border: 0;
-    color: rgb(0, 0, 0);
-    font-family: circular-medium;
-    font-size: 26px;
-    padding-left: 10px;
-}
-
-.RegisteroptionTile {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    height: 40px;
-    width: 312px;
-    border: 0;
-    color: rgb(0, 0, 0);
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 26px;
-    padding-left: 10px;
-}
-
-
-/* Form styling */
+    @font-face {
+        font-family: circular-bold;
+        src: url(./fonts/CircularStd-Bold.otf);
+    }
+    
+    @font-face {
+        font-family: circular-medium;
+        src: url(./fonts/CircularStd-Medium.otf);
+    }
+    
+    @font-face {
+        font-family: circular-light;
+        src: url(./fonts/CircularStd-Light.otf);
+    }
+    
+    body {
+        background-color: black;
+        font-family: circular-bold;
+        height: 80vh;
+    }
+    
+    .RegisterContainer {
+        width: 100wh;
+        flex-direction: row;
+        display: flex;
+    }
+    /* Title Section */
+    
+    .RegisterTextContainerWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50vh;
+        width: 50%;
+        justify-content: space-between;
+        text-align: center;
+    }
+    
+    .RegisterTextContainer {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .RegisterSingIn-Form {
+        margin-top: 100px;
+        width: 100%;
+    }
+    
+    .RegisterMainText {
+        font-size: 60px;
+        vertical-align: middle;
+        color: white;
+        padding: 200px 0px 0px 30px;
+        text-align: center;
+    }
+    /* Title Section */
+    /* Form styling */
+    
+    .RegisterFormContainer {
+        background-color: rgb(255, 255, 255);
+        width: 50%;
+        height: 100vh;
+        display: flex;
+        /* border-radius: 20px; */
+    }
+    
+    .RegisterInput-Row {
+        display: flex;
+        margin: 60px;
+    }
+    
+    .RegisterName-Input {
+        display: flex;
+        flex-direction: column;
+        margin-right: 20px;
+    }
+    
+    .Registername-input-label {
+        color: rgb(0, 0, 0);
+        font-size: 50px;
+    }
+    
+    .Registername-input {
+        height: 40px;
+        width: 312px;
+        background-color: #DBDBDB;
+        border: 0;
+        color: rgb(0, 0, 0);
+        font-family: circular-medium;
+        font-size: 26px;
+        padding-left: 10px;
+        border-radius: 5px;
+    }
+    
+    .Registername-input::placeholder {
+        color: rgb(0, 0, 0);
+        font-family: circular-medium;
+        font-size: 26px;
+    }
+    
+    .Registername-input:focus {
+        outline: 0;
+    }
+    
+    .RegisterUser-Gender-Input {
+        display: flex;
+        flex-direction: column;
+        margin-left: 20px;
+    }
+    
+    .Registeruser-gender-input-label {
+        color: rgb(0, 0, 0);
+        font-size: 50px;
+    }
+    
+    .RegisterUserGenderSelector {
+        height: 40px;
+        width: 312px;
+        background-color: #DBDBDB;
+        border: 0;
+        color: rgb(0, 0, 0);
+        font-family: circular-medium;
+        font-size: 26px;
+        padding-left: 10px;
+        border-radius: 5px;
+    }
+    
+    .RegisteroptionTile {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        height: 40px;
+        width: 312px;
+        border: 0;
+        color: rgb(0, 0, 0);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 26px;
+        padding-left: 10px;
+    }
+    
+    .RegisterFormCheckbox {
+        padding: 10px;
+    }
+    
+    .RegisterUser-InterestedIn-Gender {
+        font-size: 30px;
+        accent-color: black;
+    }
+    
+    .BottomRow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    /* .Checkboxinput {
+    width: 2v0px;
+    height: 20px;
+} */
+    
+    .CheckWrapper input[type="checkbox"] {
+        -webkit-transition: all .5s ease;
+        -moz-transition: all .5s ease;
+        -o-transition: all .5s ease;
+        -ms-transition: all .5s ease;
+        transition: all .5s ease;
+        -webkit-appearance: none;
+        appearance: none;
+        width: 1.6em;
+        height: 1.6em;
+        border-radius: 0.15em;
+        margin-right: 0.5em;
+        border: 0.15em solid black;
+        outline: none;
+        cursor: pointer;
+    }
+    
+    .CheckWrapper input:hover {
+        background-color: grey;
+    }
+    
+    .CheckWrapper input:checked {
+        background-color: black;
+        transform: scale(1);
+    }
+    
+    .btn,
+    input[type="submit"] {
+        cursor: pointer;
+        border-radius: 0px;
+        text-decoration: none;
+        padding: 20px 50px;
+        font-size: 15px;
+        line-height: 19px;
+        text-transform: uppercase;
+        font-family: circular-light;
+        font-weight: 400;
+        letter-spacing: 2px;
+        border-radius: 5px;
+        -webkit-transition: all .4s ease-in-out;
+        -moz-transition: all .4s ease-in-out;
+        -ms-transition: all .4s ease-in-out;
+        -o-transition: all .4s ease-in-out;
+        transition: all .4s ease-in-out;
+    }
+    
+    .btn-mid {
+        border-radius: 0px;
+        text-decoration: none;
+        padding: 14px 21px;
+        font-size: 13px;
+        line-height: 25px;
+        text-transform: uppercase;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 400;
+        letter-spacing: 3px;
+        -webkit-transition: all .4s ease-in-out;
+        -moz-transition: all .4s ease-in-out;
+        -ms-transition: all .4s ease-in-out;
+        -o-transition: all .4s ease-in-out;
+        transition: all .4s ease-in-out;
+    }
+    
+    .btn:hover,
+    input[type="submit"]:hover {
+        -webkit-transition: all .4s ease-in-out;
+        -moz-transition: all .4s ease-in-out;
+        -ms-transition: all .4s ease-in-out;
+        -o-transition: all .4s ease-in-out;
+        transition: all .4s ease-in-out;
+    }
+    
+    .btn-dark,
+    input[type="submit"] {
+        border: solid 2px black;
+        background: transparent;
+        color: black;
+    }
+    
+    .btn-dark:hover,
+    input[type="submit"]:hover,
+    .btn-dark.active {
+        border: solid 2px black;
+        background: black;
+        color: #fff;
+    }
+    
+    .RegisterButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    /* Form styling */
+    
+    @media screen and (max-width: 1420px) {
+        .RegisterInput-Row {
+            justify-content: center;
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+        .RegisterName-Input {
+            padding-right: 40px;
+        }
+        .RegisterUser-Gender-Input {
+            padding-left: 40px;
+        }
+        .RegisterContainer {
+            flex-direction: column;
+        }
+        .RegisterFormContainer {
+            width: 100%;
+        }
+        .RegisterTextContainerWrapper {
+            width: 100%;
+            height: 20vh;
+        }
+        .RegisterSingIn-Form {
+            margin: 0;
+        }
+        .RegisterMainText {
+            padding: 0;
+        }
+    }
+    
+    @media screen and (max-width: 730px) {
+        .RegisterName-Input {
+            margin-right: 0;
+        }
+        .RegisterUser-Gender-Input {
+            margin-left: 0;
+        }
+        .BottomRow {
+            flex-direction: column;
+        }
+        .RegisterName-Input {
+            padding: 0;
+        }
+        .RegisterUser-Gender-Input {
+            padding: 0;
+            padding-top: 30px;
+        }
+        .BottomGenderInputLabel {
+            font-size: 45px;
+        }
+        .RegisterFormCheckbox {
+            font-size: 30px;
+        }
+        .CheckWrapper input[type="checkbox"] {
+            width: 1.8em;
+            height: 1.8em;
+        }
+    }
+    
+    @media screen and (max-width: 470px) {
+        .RegisterName-Input {
+            margin-right: 0;
+        }
+        .RegisterUser-Gender-Input {
+            margin-left: 0;
+        }
+        .RegisterMainText {
+            /* padding-bottom: 20px; */
+            font-size: 25px;
+        }
+        .RegisterTextContainerWrapper {
+            height: 10vh;
+        }
+        .Registername-input-label {
+            font-size: 30px;
+        }
+        .Registeruser-gender-input-label {
+            font-size: 30px;
+        }
+        ul {
+            padding: 5px
+        }
+        .RegisterCheckContainer {
+            font-size: 20px;
+        }
+        .BottomGenderInputLabel {
+            font-size: 45px;
+        }
+        .RegisterFormCheckbox {
+            font-size: 30px;
+        }
+        .CheckWrapper input[type="checkbox"] {
+            width: 1.8em;
+            height: 1.8em;
+        }
+        .RegisterFormContainer {
+            height: 130vh;
+        }
+    }
