@@ -1,134 +1,142 @@
 @font-face {
-  font-family: circular-bold;
-  src: url(./fonts/CircularStd-Bold.otf);
+    font-family: circular-bold;
+    src: url(./fonts/CircularStd-Bold.otf);
 }
+
 @font-face {
-  font-family: circular-medium;
-  src: url(./fonts/CircularStd-Medium.otf);
+    font-family: circular-medium;
+    src: url(./fonts/CircularStd-Medium.otf);
 }
+
 @font-face {
-  font-family: circular-light;
-  src: url(./fonts/CircularStd-Light.otf);
+    font-family: circular-light;
+    src: url(./fonts/CircularStd-Light.otf);
 }
 
 body {
-  background-color: black;
-  font-family: circular-bold;
-  height: 80vh;
+    background-color: black;
+    font-family: circular-bold;
+    height: 80vh;
 }
 
-.container {
-  width: 100wh;
-  flex-direction: row;
-  display: flex;
+.RegisterContainer {
+    width: 100wh;
+    flex-direction: row;
+    display: flex;
 }
+
 
 /* Title Section */
-.TextContainerWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 50vh;
-  width: 30%;
-  justify-content: space-between;
+
+.RegisterTextContainerWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    width: 30%;
+    justify-content: space-between;
 }
 
-.TextContainer {
+.RegisterTextContainer {}
+
+.RegisterSingIn-Form {
+    margin-top: 100px;
+    width: 100%;
 }
 
-.SingIn-Form {
-  margin-top: 100px;
-  width: 100%;
+.RegisterMainText {
+    font-size: 60px;
+    vertical-align: middle;
+    color: white;
+    padding: 200px 0px 0px 30px;
 }
 
-.MainText {
-  font-size: 60px;
-  vertical-align: middle;
-  color: white;
-  padding: 200px 0px 0px 30px;
-}
+
 /* Title Section */
+
 
 /* Form styling */
-.FormContainer {
-  background-color: rgb(255, 255, 255);
-  width: 70%;
-  height: 100vh;
-  display: flex;
-  border-radius: 20px;
+
+.RegisterFormContainer {
+    background-color: rgb(255, 255, 255);
+    width: 70%;
+    height: 100vh;
+    display: flex;
+    border-radius: 20px;
 }
 
-.Input-Row {
-  display: flex;
-  margin: 60px;
-  width: 80%;
-  justify-content: space-between;
+.RegisterInput-Row {
+    display: flex;
+    margin: 60px;
+    width: 80%;
+    justify-content: space-between;
 }
 
-.Name-Input {
-  display: flex;
-  flex-direction: column;
-  /* margin-right: 80px; */
+.RegisterName-Input {
+    display: flex;
+    flex-direction: column;
+    /* margin-right: 80px; */
 }
 
-.name-input-label {
-  color: rgb(0, 0, 0);
-  font-size: 50px;
+.Registername-input-label {
+    color: rgb(0, 0, 0);
+    font-size: 50px;
 }
 
-.name-input {
-  height: 38px;
-  width: 300px;
-  background-color: rgba(51, 51, 51, 0.404);
-  border: 0;
-  color: rgb(0, 0, 0);
-  font-family: circular-medium;
-  font-size: 26px;
-  padding-left: 10px;
+.Registername-input {
+    height: 38px;
+    width: 300px;
+    background-color: rgba(51, 51, 51, 0.404);
+    border: 0;
+    color: rgb(0, 0, 0);
+    font-family: circular-medium;
+    font-size: 26px;
+    padding-left: 10px;
 }
 
-.name-input::placeholder {
-  color: rgb(0, 0, 0);
-  font-family: circular-medium;
-  font-size: 26px;
+.Registername-input::placeholder {
+    color: rgb(0, 0, 0);
+    font-family: circular-medium;
+    font-size: 26px;
 }
 
-.name-input:focus {
-  outline: 0;
+.Registername-input:focus {
+    outline: 0;
 }
 
-.User-Gender-Input {
-  display: flex;
-  flex-direction: column;
+.RegisterUser-Gender-Input {
+    display: flex;
+    flex-direction: column;
 }
 
-.user-gender-input-label {
-  color: rgb(0, 0, 0);
-  font-size: 50px;
+.Registeruser-gender-input-label {
+    color: rgb(0, 0, 0);
+    font-size: 50px;
 }
 
-.UserGenderSelector {
-  height: 40px;
-  width: 312px;
-  background-color: rgba(51, 51, 51, 0.404);
-  border: 0;
-  color: rgb(0, 0, 0);
-  font-family: circular-medium;
-  font-size: 26px;
-  padding-left: 10px;
+.RegisterUserGenderSelector {
+    height: 40px;
+    width: 312px;
+    background-color: rgba(51, 51, 51, 0.404);
+    border: 0;
+    color: rgb(0, 0, 0);
+    font-family: circular-medium;
+    font-size: 26px;
+    padding-left: 10px;
 }
 
-.optionTile {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  height: 40px;
-  width: 312px;
-  border: 0;
-  color: rgb(0, 0, 0);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 26px;
-  padding-left: 10px;
+.RegisteroptionTile {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 40px;
+    width: 312px;
+    border: 0;
+    color: rgb(0, 0, 0);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 26px;
+    padding-left: 10px;
 }
+
 
 /* Form styling */
