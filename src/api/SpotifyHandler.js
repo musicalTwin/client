@@ -1,5 +1,5 @@
 import Spotify from "spotify-web-api-js";
-import Cookie from "js-cookie";
+
 
 export class SpotifyHandler {
   constructor(token) {
@@ -18,7 +18,8 @@ export class SpotifyHandler {
   }
 
   async proPic(userId) {
-    userId = userId || (await this.getId());
+    userId = userId || (await this.getId()); //se non lo passi lo ricava da solo
+
     var userProfilePicture = await this.spotify.getUser(userId);
     return userProfilePicture.images[0].url;
   }
@@ -64,6 +65,13 @@ export class SpotifyHandler {
   async getUsers() {
     var users = await fetch("/api/v1/users");
     return users.json();
+  }
+  async getUser(userId) {
+    userId = userId || (await this.getId()); //se non lo passi lo ricava da solo
+
+    var user = await fetch(`/api/v1/users/${userId}`);
+    var res = await user.json();
+    return res;
   }
   async getGenders() {
     var genders = await fetch("/api/v1/genders");
@@ -164,6 +172,14 @@ export class SpotifyHandler {
     return objs;
   }
 
+  async getTopUserGenre(userId) {
+    userId = userId || (await this.getId()); //se non lo passi lo ricava da solo
+    var response = await fetch(`/api/v1/users-genres/${userId}`);
+    var text = await response.text();
+    var obj = JSON.parse(text);
+    return obj.slice(0, 3);
+  }
+
   async checkIfMatched(userToCheckId, userId) {
     userId = userId || (await this.getId()); //se non lo passi lo ricava da solo
     var response = await fetch(
@@ -174,7 +190,7 @@ export class SpotifyHandler {
     return bool;
   }
 
-  async getTopUserGenre(userId) {
+  async getUserGenre(userId) {
     userId = userId || (await this.getId()); //se non lo passi lo ricava da solo
     var response = await fetch(`/api/v1/users-genres/${userId}`);
     var text = await response.text();

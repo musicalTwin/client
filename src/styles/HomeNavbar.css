@@ -1,0 +1,52 @@
+.HomeNavMain {
+  list-style-type: none;
+  margin: 0;
+  padding: 15px;
+  font-family: circular-bold;
+  overflow: hidden;
+  background-color: black;
+  /* border-bottom: 4px solid white; */
+}
+
+.HomeNavContent {
+  float: left;
+}
+
+.HomeNavContent:last-child {
+  border-right: none;
+}
+
+.HomeNavContent a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 12px 16px;
+  text-decoration: none;
+}
+
+.right {
+  float: right !important;
+}
+
+.right:hover {
+  opacity: 0.9;
+  border-radius: 10px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.HomeNavLogout:hover {
+  color: black;
+}
+
+.profilepicture {
+  width: 50px;
+  height: auto;
+  /* position: relative; */
+  border-radius: 10px;
+}
+
+.profilepicture:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
