@@ -1,6 +1,5 @@
 import Spotify from "spotify-web-api-js";
 
-
 export class SpotifyHandler {
   constructor(token) {
     this.spotify = new Spotify();
@@ -195,6 +194,7 @@ export class SpotifyHandler {
     var response = await fetch(`/api/v1/users-genres/${userId}`);
     var text = await response.text();
     var obj = JSON.parse(text);
+    console.log(obj);
     return obj.slice(0, 3);
   }
 }

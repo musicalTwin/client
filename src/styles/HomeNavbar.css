@@ -40,8 +40,8 @@
 }
 
 .profilepicture {
-  width: 50px;
-  height: auto;
+  width: 40px;
+  height: 40px;
   /* position: relative; */
   border-radius: 10px;
 }

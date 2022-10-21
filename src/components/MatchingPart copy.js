@@ -7,10 +7,6 @@ import Button from "react-bootstrap/Button";
 import BackDrop from "@mui/material/Backdrop";
 import Card from "./Card";
 
-import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
-import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
-import { LoremPicsum } from "react-lorem-picsum";
-
 const MatchingPart = (props) => {
   const [empty, setEmpty] = useState(false);
   const [matchFound, setMatchFound] = useState(false);
@@ -25,11 +21,7 @@ const MatchingPart = (props) => {
   const [currentIndex, setCurrentIndex] = useState(db.length - 1);
   const [lastDirection, setLastDirection] = useState();
   const currentIndexRef = useRef(currentIndex);
-  const buttonStyle = {
-    color: "white",
-    fontSize: "34px",
-    paddingTop: "3px",
-  };
+
   const childRefs = useMemo(
     () =>
       Array(db.length)
@@ -88,7 +80,7 @@ const MatchingPart = (props) => {
   }
 
   return (
-    <div className="MatchingPart">
+    <>
       <BackDrop
         open={matchFound}
         sx={{
@@ -160,48 +152,23 @@ const MatchingPart = (props) => {
       {db && db.length && !empty ? (
         <div className="cardContainer">
           {db.map((obj, index) => {
-            var img = (
-              <LoremPicsum
-                width={360}
-                height={300}
-                random={index}
-                className="User-Image"
-              />
-            );
-
-            // coso.getTopUserGenre(obj.user.id).then((carlo) => {
-            //   // console.log(carlo);
-            // });
-
             return (
-              <div className="cardOverlay" key={obj.user.id}>
-                <TinderCard
-                  key={obj.user.id}
-                  onSwipe={(direction) => {
-                    swiped(direction, obj, index);
-                    if (index + 1 === 0) {
-                      setEmpty(true);
-                    }
-                  }}
-                  ref={childRefs[index]}
-                  onCardLeftScreen={() => outOfFrame(index)}
-                  className="tinder-card"
-                >
-                  <Card obj={obj} img={img} />
-                </TinderCard>
-              </div>
+              <TinderCard
+                key={obj.user.id}
+                onSwipe={(direction) => {
+                  swiped(direction, obj, index);
+                  if (index + 1 === 0) {
+                    setEmpty(true);
+                  }
+                }}
+                ref={childRefs[index]}
+                onCardLeftScreen={() => outOfFrame(index)}
+                className="cardOverlay"
+              >
+                <Card obj={obj} />
+              </TinderCard>
             );
           })}
-          <div className="buttonRowWrapper">
-            <div className="buttonRow">
-              <button className="home-btn" onClick={() => swipe("left")}>
-                <i className="fa-solid fa-xmark" style={buttonStyle}></i>
-              </button>
-              <button className="home-btn" onClick={() => swipe("right")}>
-                <i className="fa-solid fa-check" style={buttonStyle}></i>
-              </button>
-            </div>
-          </div>
         </div>
       ) : (
         <div className="alreadySeenError">
@@ -211,7 +178,7 @@ const MatchingPart = (props) => {
           </Button>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

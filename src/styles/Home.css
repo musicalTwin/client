@@ -21,14 +21,14 @@
 } */
 
 :root {
-    --BackGroundColor: #111111;
-    --TextWhite: #ffffff;
-    --SpotifyGreen: #01b34e;
-    --SpotifyDarkerGreen: #249c17;
-    --DarkBlack: #060606;
-    --DarkGreen: #0c3d1d;
-    --cardWidth: 300px;
-    --cardHeight: 360px;
+  --BackGroundColor: #111111;
+  --TextWhite: #ffffff;
+  --SpotifyGreen: #01b34e;
+  --SpotifyDarkerGreen: #249c17;
+  --DarkBlack: #060606;
+  --DarkGreen: #0c3d1d;
+  --cardWidth: 300px;
+  --cardHeight: 360px;
 }
 
 .Home {
@@ -81,8 +81,12 @@
   cursor: pointer;
 }
 
+.home-btn:active {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .paolo {
-    height: 100vh;
-    width: 100%;
-    background-color: white;
+  height: 100vh;
+  width: 100%;
+  background-color: white;
 }
