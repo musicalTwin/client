@@ -4,13 +4,13 @@ import "../styles/Navbar.css";
 const NavBar = () => {
   return (
     <div className="Navbar">
-      <ul>
-        <li>
+      <ul className="NavMain">
+         <li className="NavContent">
           <a href="https://github.com/aleeeee1" target="_blank" rel="noreferrer">
             Ale1
           </a>
         </li>
-        <li>
+         <li className="NavContent">
           <a
             href="https://github.com/derialdavi"
             target="_blank"
@@ -19,12 +19,12 @@ const NavBar = () => {
             DerialDavi
           </a>
         </li>
-        <li>
+         <li className="NavContent">
           <a href="https://github.com/zubbyy" target="_blank" rel="noreferrer">
             Zubby
           </a>
         </li>
-        <li className="right">
+         <li className="NavContent right">
           <a
             href="https://github.com/musicalTwin"
             target="_blank"

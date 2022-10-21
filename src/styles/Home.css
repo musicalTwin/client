@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
 /* @font-face {
   font-family: "CircularSpotifyText-light";
   src: url("fonts/CircularSpotifyText-Light.otf") format("opentype");
@@ -20,29 +21,35 @@
 } */
 
 :root {
-  --BackGroundColor: #111111;
-  --TextWhite: #ffffff;
-  --SpotifyGreen: #01b34e;
-  --SpotifyDarkerGreen: #249c17;
-  --DarkBlack: #060606;
-  --DarkGreen: #0c3d1d;
-  --cardWidth: 300px;
-  --cardHeight: 360px;
+    --BackGroundColor: #111111;
+    --TextWhite: #ffffff;
+    --SpotifyGreen: #01b34e;
+    --SpotifyDarkerGreen: #249c17;
+    --DarkBlack: #060606;
+    --DarkGreen: #0c3d1d;
+    --cardWidth: 300px;
+    --cardHeight: 360px;
 }
 
 .Home {
-  background-color: black;
-  width: 100vw;
-  height: 100vh;
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
 }
 
 .cardOverlay {
-  position: absolute;
+    position: absolute;
 }
 
 .cardContainer {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.paolo {
+    height: 100vh;
+    width: 100%;
+    background-color: white;
 }

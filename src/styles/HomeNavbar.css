@@ -1,8 +1,4 @@
-.right {
-    float: right!important;
-}
-
-.NavMain {
+.HomeNavMain {
     list-style-type: none;
     margin: 0;
     padding: 15px;
@@ -12,15 +8,15 @@
     /* border-bottom: 4px solid white; */
 }
 
-.NavContent {
+.HomeNavContent {
     float: left;
 }
 
-.NavContent:last-child {
+.HomeNavContent:last-child {
     border-right: none;
 }
 
-.NavContent a {
+.HomeNavContent a {
     display: block;
     color: white;
     text-align: center;
@@ -28,11 +24,29 @@
     text-decoration: none;
 }
 
-.NavContent a:hover {
-    opacity: 0.9;
+.right {
+    float: right!important;
+}
+
+.right:hover {
     opacity: 0.9;
     border-radius: 10px;
     background-color: white;
-    color: black;
     cursor: pointer;
+}
+
+.HomeNavLogout:hover {
+    color: black;
+}
+
+.profilepicture {
+    width: 50px;
+    height: auto;
+    /* position: relative; */
+    border-radius: 10px;
+}
+
+.profilepicture:hover {
+    cursor: pointer;
+    opacity: 0.8;
 }
