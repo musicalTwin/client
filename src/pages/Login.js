@@ -92,6 +92,8 @@ function Login() {
               title="Continue"
               noLogo={true}
               redirectUri="http://192.168.1.105:3000/login"
+              
+
               clientID="4a8a038032414b9a8c7ca838266cc689"
               scopes={[
                 "user-top-read",
