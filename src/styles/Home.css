@@ -31,18 +31,51 @@
 }
 
 .Home {
-  background-color: black;
+  background-color: rgb(15, 15, 15);
   width: 100vw;
   height: 100vh;
 }
 
 .cardOverlay {
   position: absolute;
+  /* width: fit-content;
+  height: fit-content; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .cardContainer {
+  height: fit-content;
+  width: fit-content;
+}
+
+.buttonRowWrapper {
   position: absolute;
+  /* width: fit-content;
+  height: fit-content; */
+  top: 80%;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 10%);
+}
+
+.buttonRow {
+  display: flex;
+  justify-content: space-between;
+  height: 25px;
+  width: 200px;
+}
+
+.home-btn {
+  height: 50px;
+  width: 50px;
+
+  background-color: black;
+  outline: 0;
+  border: 3px solid white;
+
+  box-shadow: 0;
+  border-radius: 360%;
+
+  cursor: pointer;
 }

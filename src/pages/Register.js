@@ -39,7 +39,7 @@ function Register() {
     spotifyHandler.addUserSongs();
   }
 
-  async function injector() {
+  async function injector(a) {
     if (intrestedGenderCounter > 0) {
       try {
         registraUtente();
@@ -48,7 +48,9 @@ function Register() {
         aggiungiTopCanzoni();
         aggiungiTopArtisti();
 
-        // window.location = "home";
+        if (a === 1) {
+          window.location = "home";
+        }
         console.log("home");
       } catch (error) {
         console.log(error);
@@ -66,7 +68,7 @@ function Register() {
         setGenders(result);
       });
 
-    // creation();
+    creation();
 
     // setSpotifyHandler(new SpotifyHandler(token)) ;
   }, []);
@@ -87,6 +89,8 @@ function Register() {
             onSubmit={(e) => {
               e.preventDefault();
               injector();
+              injector(); //la chiamiamo un paio
+              injector(1); //di volte per assicurarci che tutto vada bene
               // console.log(e.target.elements);
             }}
           >

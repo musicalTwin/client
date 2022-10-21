@@ -1,9 +1,30 @@
 .Card {
-  height: 300px;
-  width: 300px;
-  background-color: gray;
+  height: 450px;
+  width: 360px;
+  background-color: rgb(243, 238, 238);
+  /* align-items: center; */
+  /* justify-content: center; */
+  flex-direction: column;
+  display: flex;
+  border-radius: 10px;
 }
 
 .User-Name {
-  color: white;
+  color: rgb(13, 12, 12);
+  font-size: 40px;
+  /* text-align: center; */
+}
+
+.User-Image {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.User-Info {
+  padding: 7px;
+}
+.User-Gender {
+  margin-top: -9px;
+  font-family: circular-medium;
+  color: rgba(38, 37, 37, 0.597);
 }

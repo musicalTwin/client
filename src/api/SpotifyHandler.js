@@ -18,6 +18,7 @@ export class SpotifyHandler {
   }
 
   async proPic(userId) {
+    userId = userId || (await this.getId());
     var userProfilePicture = await this.spotify.getUser(userId);
     return userProfilePicture.images[0].url;
   }
@@ -173,7 +174,7 @@ export class SpotifyHandler {
     return bool;
   }
 
-  async getUserGenre(userId) {
+  async getTopUserGenre(userId) {
     userId = userId || (await this.getId()); //se non lo passi lo ricava da solo
     var response = await fetch(`/api/v1/users-genres/${userId}`);
     var text = await response.text();

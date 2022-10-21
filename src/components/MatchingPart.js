@@ -7,6 +7,10 @@ import Button from "react-bootstrap/Button";
 import BackDrop from "@mui/material/Backdrop";
 import Card from "./Card";
 
+import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
+import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
+import { LoremPicsum } from "react-lorem-picsum";
+
 const MatchingPart = (props) => {
   const [empty, setEmpty] = useState(false);
   const [matchFound, setMatchFound] = useState(false);
@@ -80,7 +84,7 @@ const MatchingPart = (props) => {
   }
 
   return (
-    <>
+    <div className="MatchingPart">
       <BackDrop
         open={matchFound}
         sx={{
@@ -152,23 +156,50 @@ const MatchingPart = (props) => {
       {db && db.length && !empty ? (
         <div className="cardContainer">
           {db.map((obj, index) => {
+            var img = (
+              <LoremPicsum
+                width={360}
+                height={300}
+                random={index}
+                className="User-Image"
+              />
+            );
+
             return (
-              <TinderCard
-                key={obj.user.id}
-                onSwipe={(direction) => {
-                  swiped(direction, obj, index);
-                  if (index + 1 === 0) {
-                    setEmpty(true);
-                  }
-                }}
-                ref={childRefs[index]}
-                onCardLeftScreen={() => outOfFrame(index)}
-                className="cardOverlay"
-              >
-                <Card obj={obj} />
-              </TinderCard>
+              <div className="cardOverlay" key={obj.user.id}>
+                <TinderCard
+                  key={obj.user.id}
+                  onSwipe={(direction) => {
+                    swiped(direction, obj, index);
+                    if (index + 1 === 0) {
+                      setEmpty(true);
+                    }
+                  }}
+                  ref={childRefs[index]}
+                  onCardLeftScreen={() => outOfFrame(index)}
+                  className="tinder-card"
+                >
+                  <Card obj={obj} img={img} />
+                </TinderCard>
+              </div>
             );
           })}
+          <div className="buttonRowWrapper">
+            <div className="buttonRow">
+              <button className="home-btn" onClick={() => swipe("left")}>
+                <i
+                  className="fa-solid fa-xmark"
+                  style={{ color: "white", fontSize: "34px" }}
+                ></i>
+              </button>
+              <button className="home-btn" onClick={() => swipe("right")}>
+                <i
+                  className="fa-solid fa-check"
+                  style={{ color: "white", fontSize: "34px" }}
+                ></i>
+              </button>
+            </div>
+          </div>
         </div>
       ) : (
         <div className="alreadySeenError">
@@ -178,7 +209,7 @@ const MatchingPart = (props) => {
           </Button>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
